@@ -1,0 +1,85 @@
+include includes/mixins.pug
+
+doctype html
+html
+  head
+    +head('Welcome')
+
+  body#welcome
+    #main
+      header
+        +navigation('index')
+        .hero
+
+      #intro.pg
+        #headline
+          h1 Welcome to Morite Bird Watching, Seram Island!
+
+        article
+          .inner
+            p.heading.
+              The island of Seram, part of Wallacea, has unique flora and fauna due to blending of Asian and Australasian species. This island is also known as the home of the Moluccan cockatoo – a bird found nowhere else on earth. Seram Island is now one of the top destinations in Asia for bird watching.
+
+            p.
+              The villagers in Masihulan, on the northern coast of Seram, are aware of the vital role they play in protecting endangered birds from illegal trading. They are focusing on organizing bird watching tours instead of trapping and smuggling birds.
+            p.
+              Morite Bird Watching is a small, community-based tour operator located in Masihulan village. All members of the team are native to Seram. With this spirit of community and ecotourism, we’d like to share the rich biodiversity of Seram.
+
+      .pg
+        .parallax
+          picture
+            -// source(srcset='images/IMG_5547.jpg', media='(max-width: 900px)') // this works!
+            img(class='lazyload', src='images/welcome/econ-soni-tree.jpg' width='1024', height='560', alt='')
+        article
+          .inner
+            p.heading.
+              Our local guides are available to tell you stories about Seram, its culture, its natural beauties and to introduce you to the life of the birds.
+            p.
+              Book a tour with us and we will help you explore the nature and the birds of Seram, as well as giving you insight into the local values, custom and traditions.
+
+      .pg
+        .parallax
+          picture
+            -// source(srcset='images/IMG_5547.jpg', media='(max-width: 900px)') // this works!
+            img(class='lazyload', src='images/birds/eclectus-nest.jpg' width='1024', height='560', alt='')
+        article
+          .inner
+            h1 Birds from the Morite Region
+            p.
+              These are some of the unique birds in the jungle here. All photos were taken by us or our clients.
+          
+          .boxed
+            picture.half-col
+              img(class='lazyload', src='images/birds/cockatoo-flying.jpg', width='450', alt='Seram (Moluccan) Cockatoos')
+              figure Seram (Moluccan) Cockatoos
+            picture.half-col
+              img(class='lazyload', src='images/birds/eclectus-male-female.jpg', width='450', height='320', alt='Eclectus Parrots')
+              figure Eclectus Parrots
+
+            picture.half-col
+              img(class='lazyload', src='images/birds/red-lories.jpg', width='450', alt='Red Lories')
+              figure Red Lories
+            picture.half-col
+              img(class='lazyload', src='images/birds/moluccan-king-parrot.jpg', width='450', height='320', alt='Moluccan King Parrot')
+              figure Moluccan King Parrots
+
+            picture.half-col
+              img(class='lazyload', src='images/birds/hornbill.jpg', width='450', alt='Hornbill')
+              figure Hornbills
+            picture.half-col
+              img(class='lazyload', src='images/birds/moluccan-flying-fox.jpg', width='450', height='320', alt='Moluccan Flying Fox')
+              figure Moluccan Flying Foxes
+
+          .inner
+            p
+              |Other birds you are likely to see here are:
+            ul
+              li Indoneasian Castrols
+              li Long Christ Mina
+              li Coconut Lories
+              li Rainbow Lories
+
+
+
+      +footer('welcome')
+    +main-js

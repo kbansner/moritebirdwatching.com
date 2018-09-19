@@ -1,0 +1,48 @@
+mixin head(pageTitle)
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  script(async, src="https://www.googletagmanager.com/gtag/js?id=UA-50336213-2")
+  script.
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    //gtag('js', new Date());
+    //gtag('config', 'UA-50336213-2');
+
+  link(href='https://fonts.googleapis.com/css?family=EB+Garamond|Ovo' rel='stylesheet')
+  link(href='/css/normalize-min.css', rel='stylesheet', type='text/css')
+  link(href='/css/main.css', rel='stylesheet', type='text/css')
+  title 
+    |Morite Birdwatching: 
+    =pageTitle
+
+
+mixin link(href, name)
+  a(href=href)&attributes(attributes)= name
+
+mixin navigation(page)
+  nav
+    +link('team.html', 'Team')(class={'on':page == 'team'})
+    +link('services.html', 'Services')(class={'on':page == 'services'})
+    +link('birds.html', 'Birds')(class={'on':page == 'birds'})
+    +link('index.html', 'Welcome')(class={'on':page == 'welcome'})
+
+mixin footer(page)
+  footer
+    a.top(href='javascript:$(\'#main\').scrollTop(0);', title='Back to top') Top
+    nav
+      +link('index.html', 'Welcome')(class={'on':page == 'welcome'})
+      +link('birds.html', 'Birds')(class={'on':page == 'birds'})
+      +link('services.html', 'Services')(class={'on':page == 'services'})
+      +link('team.html', 'Team')(class={'on':page == 'team'})
+
+
+mixin main-js
+  script(src="http://code.jquery.com/jquery-2.2.4.min.js", integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=", crossorigin="anonymous")
+
+  script(type='text/javascript').
+    $(document).ready(function () { 
+      $('#main').addClass('is-js');
+      setTimeout(function(){$('.hero').addClass('loaded')}, 1200); 
+    });
+    
