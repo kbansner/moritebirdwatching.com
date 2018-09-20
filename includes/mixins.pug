@@ -20,21 +20,19 @@ mixin head(pageTitle)
 mixin link(href, name)
   a(href=href)&attributes(attributes)= name
 
-mixin navigation(page)
+mixin navigation
   nav
-    +link('team.html', 'Team')(class={'on':page == 'team'})
-    +link('services.html', 'Services')(class={'on':page == 'services'})
-    +link('birds.html', 'Birds')(class={'on':page == 'birds'})
-    +link('index.html', 'Welcome')(class={'on':page == 'welcome'})
+    +link('#team', 'Team')
+    +link('#services', 'Services')
+    +link('#birds', 'Birds')
 
 mixin footer(page)
   footer
-    a.top(href='javascript:$(\'#main\').scrollTop(0);', title='Back to top') Top
     nav
-      +link('index.html', 'Welcome')(class={'on':page == 'welcome'})
-      +link('birds.html', 'Birds')(class={'on':page == 'birds'})
-      +link('services.html', 'Services')(class={'on':page == 'services'})
-      +link('team.html', 'Team')(class={'on':page == 'team'})
+      +link('javascript:$(\'#main\').scrollTop(0);', 'Top')
+      +link('#birds', 'Birds')
+      +link('#services', 'Services')
+      +link('#team', 'Team')
 
 
 mixin main-js

@@ -8,7 +8,7 @@ html
   body#welcome
     #main
       header
-        +navigation('index')
+        +navigation
         .hero
 
       #intro.pg
@@ -37,7 +37,7 @@ html
             p.
               Book a tour with us and we will help you explore the nature and the birds of Seram, as well as giving you insight into the local values, custom and traditions.
 
-      .pg
+      .pg#birds
         .parallax
           picture
             -// source(srcset='images/IMG_5547.jpg', media='(max-width: 900px)') // this works!
@@ -79,7 +79,8 @@ html
               li Coconut Lories
               li Rainbow Lories
 
+      .pg#services
+      .pg#team
 
-
-      +footer('welcome')
+      +footer
     +main-js
