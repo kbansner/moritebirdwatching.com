@@ -366,3 +366,26 @@ footer
     background-position-y: 01px
 
 //- end: Footer
+
+dl.services
+  display: flex
+  align-items: flex-start
+  margin-top: 1rem
+  @media(max-width: $breakpoint-tablet)
+    flex-direction: column
+  dt
+    flex: 1;
+    display: block
+    margin-bottom: 1rem
+    padding-right: 1rem
+    font-size: .8rem
+    line-height: 1rem
+    min-width: 30%
+    // outline: 1px dotted blue
+
+  dd
+    display: block
+    margin-bottom: 3rem
+    margin-left: 0
+    width: 450px
+    // outline: 1px dotted green

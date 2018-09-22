@@ -80,6 +80,44 @@ html
               li Rainbow Lories
 
       .pg#services
+        article
+          .inner
+            h1 Services
+            p.
+              The guides are very versital...
+          
+
+            dl.services
+              dt
+                b Bird Watching Walk
+              dd
+                picture
+                  -// source(srcset='images/IMG_5547.jpg', media='(max-width: 900px)') // this works!
+                  img(src='images/services/walk.jpg', width='450', height='300', alt='')
+
+            dl.services
+              dt
+                b Bird Watching Jungle Hike
+                p.
+                  Ad sunt incididunt eu sint quo ut veniam proident. E ex consectetur, ita sunt domesticarum quo aliquip non sint officia, probant elit vidisse.
+              dd
+                picture
+                  img(src='images/services/jungle-walk.jpg', width='450', height='300', alt='')
+
+            dl.services
+              dt
+                b 
+              dd
+                picture
+                  img(src='images/services/jungle-cooking.jpg', width='450', height='300', alt='')
+
+            dl.services
+              dt
+                b 
+              dd
+                picture
+                  img(src='images/services/custom-platform.jpg', width='450', height='300', alt='')
+
       .pg#team
 
       +footer
