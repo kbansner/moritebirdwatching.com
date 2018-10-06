@@ -1,0 +1,21 @@
+include includes/mixins.pug
+
+doctype html
+html
+  head
+    +head('Thanks for your interest')
+
+  body#thanks
+    #main
+      header
+        +navigation
+
+      #intro.pg
+        #headline
+          h1 
+            |Thanks for your interest.
+            br
+            |We’ll get back to you soon!
+
+      -//+footer
+    +main-js
