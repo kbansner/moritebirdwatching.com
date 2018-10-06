@@ -9,7 +9,13 @@ html
     #main
       header
         +navigation
-        .hero
+        .slider
+          .slide.slide1
+          .slide.slide2
+          .slide.slide3
+          .slide.slide4
+          .slide.slide5
+          .slide.slide6
 
       #intro.pg
         #headline
@@ -22,8 +28,6 @@ html
 
             p.
               The villagers in Masihulan, on the northern coast of Seram, are aware of the vital role they play in protecting endangered birds from illegal trading. They are focusing on organizing bird watching tours instead of trapping and smuggling birds.
-            p.
-              Morite Bird Watching is a small, community-based tour operator located in Masihulan village. All members of the team are native to Seram. With this spirit of community and ecotourism, we’d like to share the rich biodiversity of Seram.
 
       .pg
         .parallax
@@ -38,9 +42,9 @@ html
               Book a tour with us and we will help you explore the nature and the birds of Seram, as well as giving you insight into the local values, custom and traditions.
 
       .pg#birds
-        .parallax
+        .parallax 
           picture
-            -// source(srcset='images/IMG_5547.jpg', media='(max-width: 900px)') // this works!
+            -//source(srcset='images/IMG_5547.jpg', media='(max-width: 900px)') // this works!
             img(class='lazyload', src='images/birds/eclectus-nest.jpg' width='1024', height='560', alt='')
         article
           .inner
@@ -79,46 +83,52 @@ html
               li Coconut Lories
               li Rainbow Lories
 
-      .pg#services
+      .pg#services.reverse
         article
-          .inner
-            h1 Services
-            p.
-              The guides are very versital...
-          
-
-            dl.services
-              dt
-                b Bird Watching Walk
-              dd
-                picture
-                  -// source(srcset='images/IMG_5547.jpg', media='(max-width: 900px)') // this works!
-                  img(src='images/services/walk.jpg', width='450', height='300', alt='')
-
-            dl.services
-              dt
-                b Bird Watching Jungle Hike
-                p.
-                  Ad sunt incididunt eu sint quo ut veniam proident. E ex consectetur, ita sunt domesticarum quo aliquip non sint officia, probant elit vidisse.
-              dd
-                picture
-                  img(src='images/services/jungle-walk.jpg', width='450', height='300', alt='')
-
-            dl.services
-              dt
-                b 
-              dd
-                picture
-                  img(src='images/services/jungle-cooking.jpg', width='450', height='300', alt='')
-
-            dl.services
-              dt
-                b 
-              dd
-                picture
-                  img(src='images/services/custom-platform.jpg', width='450', height='300', alt='')
+          -//.inner
+          h1 Services
+          +service-nature-walks
+          +service-kambali-bekas
+          +service-viewing-platforms
+          +service-expedition-cooking
+          +service-api-lima
+          +service-custom-tree-platforms
+          +service-trekking
 
       .pg#team
+        article
+          .inner
+            h1 Team
+            p.
+              Morite Bird Watching is a small, community-based tour operator located in Masihulan village. All members of the team are native to Seram. With this spirit of community and ecotourism, we’d like to share the rich biodiversity of Seram.
+            +team-portrait('_Q5A7037.jpg', 'Soni')
+            +team-portrait('_Q5A7039.jpg')
+            +team-portrait('_Q5A7040.jpg')
+            +team-portrait('_Q5A7041.jpg')
+            +team-portrait('_Q5A7043.jpg', 'P.D.')
+            +team-portrait('_Q5A7044.jpg')
 
+      .pg#contact
+        article
+          .inner
+            h1 Contact Us
+            form.contact-form(action="https://formspree.io/kai@becak.bike", method="POST")
+              div
+                label 
+                span Name
+                  input(type="text" name="name", autofocus=true)
+              div
+                label 
+                  span Email Address
+                  input(type="email" name="_replyto")
+              div
+                label 
+                  span Message
+                  textarea(name='message')
+              div
+                button.btn(type="submit") Send
+
+              input(type="hidden" name="_subject" value="Morite Birdwatching Inquirery")
+              input(type="hidden" name="_next" value="http://moreitebirdwatching/confirm.html")
       +footer
     +main-js

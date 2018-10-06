@@ -18,7 +18,6 @@ html
   @media(max-width: $breakpoint-phone)
     font-size: 16px
 
-
 #main
   overflow-y: scroll
   overflow-x: hidden
@@ -75,6 +74,10 @@ footer
       display: none
 
 //- start: Hero Unit
+.slide
+  float: left
+
+.slide
 .hero
   background-position: center
   background-repeat: no-repeat
@@ -85,28 +88,46 @@ footer
   margin: 2rem auto 0
   max-width: 1024px
   h1
-    margin: 0 auto
     padding: 0
     width: 70%
     font-size: 2rem
     font-weight: bold
     font-family: 'Ovo', serif
 
+h1
+  margin: 0 auto
 
 // Large Hero
 // @media(min-width: $mediaBp1Width)
+.slider
+.slide
 .hero
   position: relative
   height: 560px
   max-height: 70vw
 
 
-#welcome .hero
-  // background-image: url(/images/hero/parrents-preening-lg.jpg)
+.hero
+.slide1
   background-image: url(/images/hero/hornbill-lg.jpg)
 
+.slide2
+  background-image: url(/images/hero/parrents-preening-lg.jpg)
+
+.slide3
+  background-image: url(/images/hero/_Q5A2371.jpg)
+
+.slide4
+  background-image: url(/images/hero/_Q5A3416.jpg)
+
+.slide5
+  background-image: url(/images/hero/_Q5A3908.jpg)
+
+.slide6
+  background-image: url(/images/hero/_Q5A4082.jpg)
+
 // hero fade in
-.is-js .hero::after
+.is-js .slider::after
     position: absolute
     content: ''
     top: 0
@@ -116,18 +137,21 @@ footer
     background-color: #eee
     z-index: 1
     transition: opacity 1s linear
-.is-js .hero.loaded::after
+.is-js .slider.loaded::after
     opacity: 0
 
 // Vertical Tablet Hero
 @media(min-width: $breakpoint-phone) and (max-width: $mediaBp1Width)
+  .slider
+  .slide
   .hero
     position: relative
     width: auto
     height: 500px
     max-height: 65.1vw
 
-  #welcome .hero
+  .slide
+  .hero
     background-image: url(/images/hero/hornbill-md.jpg)
 
 
@@ -137,13 +161,15 @@ footer
     padding-top: 1.7rem
     font-size: 1.6rem
 
+  .slider
+  .slide
   .hero
     position: relative
     height: 50vw
     max-height: none
-    // background-image: none !important
 
-  #welcome .hero
+  .slide
+  .hero
     background-image: url(/images/hero/hornbill-sm.jpg)
 
 //- end: Hero Unit
@@ -267,6 +293,9 @@ figure
   line-height: 1.4
   color: #333
 
+.reverse figure
+  color: #ccc
+
 //- start: parallax section
 #main
   @media(min-width: $breakpoint-parallax)
@@ -367,25 +396,86 @@ footer
 
 //- end: Footer
 
+// #birds
+#services
+  padding-top: 3rem
+.reverse
+  background-color: black !important
+// #birds article
+.reverse article
+  background-color: black !important
+  color: white !important
+
 dl.services
-  display: flex
-  align-items: flex-start
+  overflow: hidden;
   margin-top: 1rem
-  @media(max-width: $breakpoint-tablet)
-    flex-direction: column
   dt
-    flex: 1;
+    float: left;
     display: block
     margin-bottom: 1rem
     padding-right: 1rem
     font-size: .8rem
     line-height: 1rem
-    min-width: 30%
-    // outline: 1px dotted blue
+    width: 30%
 
   dd
-    display: block
+    // position: relative
+    width: calc(70% - 1rem);
+    float: right;
+    // display: block
     margin-bottom: 3rem
     margin-left: 0
-    width: 450px
-    // outline: 1px dotted green
+    // figure
+    //   position: absolute
+    //   bottom: .5em
+    // max-width: 450px
+  @media(max-width: $breakpoint-tablet)
+    dt
+    dd
+      float: none
+      width: auto
+
+.gallery
+  scroll-snap-type: x mandatory
+  overflow-x: scroll
+  display: flex
+  // outline: 1px dotted blue
+  picture
+    margin-right: 0.6rem
+    scroll-snap-align: center
+    max-width: 450px
+    img
+      max-width: none
+
+.portrait
+  img
+    border-radius: 50%
+    border-width: 3px
+    border-style: solid
+  figure
+    text-align: center
+
+.contact-form
+  div
+    padding: 1rem 0 0
+
+  label span
+    display: block
+    padding: 5px 0
+
+  input[type=text]
+  input[type=email]
+    width: 100%
+
+  textarea
+    width: 100%
+    height: 5rem
+
+button.btn
+  padding: 0 .6rem
+  background-color: blue
+  line-height: 2rem
+  border-radius: .5rem
+  color: white
+  border: none
+  cursor: pointer
