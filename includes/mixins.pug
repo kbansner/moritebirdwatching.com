@@ -23,9 +23,10 @@ mixin link(href, name)
 
 mixin navigation
   nav
-    +link('#team', 'Team')
-    +link('#services', 'Services')
-    +link('#birds', 'Birds')
+    +link('index.html#contact', 'Contact Us')
+    +link('index.html#team', 'Team')
+    +link('index.html#services', 'Services')
+    +link('index.html#birds', 'Birds')
 
 mixin footer
   footer
@@ -73,8 +74,8 @@ mixin service-nature-walks
     dt
       b Guided Nature Walks
       p.
-        Ad sunt incididunt eu sint quo ut veniam proident. E ex consectetur, ita sunt domesticarum quo aliquip non sint officia, probant elit vidisse.
-      p 
+        We will take you for a walk between villages where we’ll point out local fora fauna and farming techinques. Bring your binoculars as we are very likely to see birds along the way. Trips can be tailored to your specific interests and energy level.
+      p
         |Group size: No limit
         br
         |Duration: 3 - 6 hours
@@ -91,7 +92,7 @@ mixin service-kambali-bekas
     dt
       b Visit to the Bird Rehabilation Center (Kambali Bekas)
       p.
-        Ad sunt incididunt eu sint quo ut veniam proident. E ex consectetur, ita sunt domesticarum quo aliquip non sint officia, probant elit vidisse.
+        The Rehabilation Center is a must see for all bird lovers visiting the area. The center houses wild caught parrots recovered from the illegal pet trade. Birds that can survive in the wild and are deemed healthy are released back to the jungles they came from.
       p 
         |Group size: No limit
         br
@@ -103,13 +104,14 @@ mixin service-kambali-bekas
       +service-picture('kambali-bekas/_Q5A3024.jpg')
       +service-picture('kambali-bekas/_Q5A3094.jpg')
       +service-picture('kambali-bekas/_Q5A3100.jpg')
-      +service-picture('kambali-bekas/IMG_1160.jpg')
+      +service-picture('kambali-bekas/IMG_1160.jpg', "Jacob says, “Saya lapar, Saya lapar (I’m hungry)”")
 
 mixin service-viewing-platforms
   dl.services
     dt
       b Vist to Viewing Platforms
-      p 
+      p Above the village of Masihoulan are two viewing platforms sourounded by parrots nests. It’s a steep 15 minute hike up from the main road, but once you’re there the view is spectacular.
+      p
         |Group size: up to 20 people
         br
         |Duration: 1 - 3 hours
@@ -139,11 +141,14 @@ mixin service-canopy-platform-trips
         -//img(src='images/services/canopy-platform-trips/2838013842_6e7b1cbccc_o.jpg', width='450', height='300', alt='')
       +service-picture('canopy-platform-trips/2838055094_4f66aee101_o.jpg')
       +service-picture('canopy-platform-trips/R0016811.jpg')
+      +service-picture('canopy-platform-trips/_Q5A7023.jpg')
 
 mixin service-expedition-cooking
   dl.services
     dt
       b Expedition Cooking
+      p.
+        Restured, if you take multi-day with us we’ll feed you well. There are some great cooks among the guides. They may even go foreging or hunting for fresh food to spice up your meals.
     dd.gallery
       +service-picture('cooking/_MG_1635.jpg')
       +service-picture('cooking/_Q5A2960.jpg')
@@ -185,8 +190,8 @@ mixin service-custom-tree-platforms
       +service-picture('custom-platforms/IMG_1437.jpg')
       +service-picture('custom-platforms/20171028_165240.jpg')
       +service-picture('custom-platforms/_Q5A4034.jpg')
-      +service-picture('custom-platforms/custom-platform.jpg')
       +service-picture('custom-platforms/IMG_1448.jpg')
+      +service-picture('custom-platforms/custom-platform.jpg')
 
 mixin service-trekking
   dl.services
@@ -218,6 +223,6 @@ mixin service-trekking
 
 mixin team-portrait(url, alt)
   picture.quarter-col.portrait
-    img(class='lazyload', src='images/team/'+url, width='90', height='135', alt=alt)
+    img(class='lazyload', src='images/team/'+url, width='80', height='100', alt=alt)
     figure
      =alt

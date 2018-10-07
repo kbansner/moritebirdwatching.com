@@ -16,6 +16,15 @@ html
           .slide.slide4
           .slide.slide5
           .slide.slide6
+          .slide.slide7
+          .slide
+          .slide
+          .slide
+          .slide
+          .slide
+          .slide
+          .slide
+          .slide
 
       #intro.pg
         #headline
@@ -54,7 +63,7 @@ html
           
           .boxed
             picture.half-col
-              img(class='lazyload', src='images/birds/cockatoo-flying.jpg', width='450', alt='Seram (Moluccan) Cockatoos')
+              img(class='lazyload', src='images/birds/cockatoo-crest.jpg', width='450', height='320', alt='Seram (Moluccan) Cockatoos')
               figure Seram (Moluccan) Cockatoos
             picture.half-col
               img(class='lazyload', src='images/birds/eclectus-male-female.jpg', width='450', height='320', alt='Eclectus Parrots')
@@ -90,6 +99,7 @@ html
           +service-nature-walks
           +service-kambali-bekas
           +service-viewing-platforms
+          +service-canopy-platform-trips
           +service-expedition-cooking
           +service-api-lima
           +service-custom-tree-platforms
@@ -112,23 +122,27 @@ html
         article
           .inner
             h1 Contact Us
-            form.contact-form(action="https://formspree.io/kai@becak.bike", method="POST")
-              div
-                label 
-                span Name
-                  input(type="text" name="name", autofocus=true)
-              div
-                label 
-                  span Email Address
-                  input(type="email" name="_replyto")
-              div
-                label 
-                  span Message
-                  textarea(name='message')
-              div
-                button.btn(type="submit") Send
+            .half-col
+              form.contact-form(action="https://formspree.io/kai@becak.bike", method="POST")
+                div
+                  label 
+                  span Name
+                    input(type="text" name="name")
+                div
+                  label 
+                    span Email Address
+                    input(type="email" name="_replyto")
+                div
+                  label 
+                    span Message
+                    textarea(name='message')
+                div
+                  button.btn(type="submit") Send
 
-              input(type="hidden" name="_subject" value="Morite Birdwatching Inquirery")
-              input(type="hidden" name="_next" value="http://moreitebirdwatching/confirm.html")
+                input(type="hidden" name="_subject" value="Morite Birdwatching Inquirery")
+                input(type="hidden" name="_next" value="http://moreitebirdwatching/confirm.html")
+
+            .half-col
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d509988.49458573177!2d128.92702245204495!3d-3.018488856446105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d6bd6d35b7b4ca3%3A0xed02e6b3442be633!2sSD+Negeri+Masihulan!5e0!3m2!1sen!2sus!4v1538806118644" width="" height="320" frameborder="0" style="border:0; float:right; width: 95%; margin-top: 2rem;" allowfullscreen></iframe>
       +footer
     +main-js

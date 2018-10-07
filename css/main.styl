@@ -78,7 +78,6 @@ footer
   float: left
 
 .slide
-.hero
   background-position: center
   background-repeat: no-repeat
   background-size: cover
@@ -101,30 +100,69 @@ h1
 // @media(min-width: $mediaBp1Width)
 .slider
 .slide
-.hero
   position: relative
   height: 560px
   max-height: 70vw
 
-
-.hero
 .slide1
   background-image: url(/images/hero/hornbill-lg.jpg)
 
 .slide2
   background-image: url(/images/hero/parrents-preening-lg.jpg)
 
+// .slide3
+//   background-image: url(/images/hero/cockatoo/lg/_Q5A2169.jpg)
+
 .slide3
-  background-image: url(/images/hero/_Q5A2371.jpg)
+  background-image: url(/images/hero/cockatoo/lg/_Q5A2270.jpg)
 
 .slide4
-  background-image: url(/images/hero/_Q5A3416.jpg)
+  background-image: url(/images/hero/cockatoo/lg/_Q5A2371.jpg)
 
 .slide5
-  background-image: url(/images/hero/_Q5A3908.jpg)
+  background-image: url(/images/hero/cockatoo/lg/_Q5A2377.jpg)
 
 .slide6
-  background-image: url(/images/hero/_Q5A4082.jpg)
+  background-image: url(/images/hero/eclectus/lg/_Q5A3304.jpg)
+
+.slide:nth-child(7)
+  background-image: url(/images/hero/eclectus/lg/_Q5A3600.jpg)
+
+.slide:nth-child(8)
+  background-image: url(/images/hero/eclectus/lg/_Q5A3607.jpg)
+
+.slide:nth-child(9)
+  background-image: url(/images/hero/eclectus/lg/_Q5A3616.jpg)
+
+.slide:nth-child(10)
+  background-image: url(/images/hero/eclectus/lg/_Q5A3708.jpg)
+
+.slide:nth-child(11)
+  background-image: url(/images/hero/eclectus/lg/_Q5A3979.jpg)
+
+.slide:nth-child(12)
+  background-image: url(/images/hero/eclectus/lg/_Q5A4003.jpg)
+
+.slide:nth-child(13)
+  background-image: url(/images/hero/eclectus/lg/_Q5A4011.jpg)
+
+.slide:nth-child(14)
+  background-image: url(/images/hero/eclectus/lg/_Q5A4012.jpg)
+
+// .slide:nth-child(15)
+//   background-image: url(/images/hero/eclectus/lg/_Q5A4066.jpg)
+
+// .slide:nth-child(16)
+//   background-image: url(/images/hero/eclectus/lg/_Q5A4078.jpg)
+//
+// .slide:nth-child(17)
+//   background-image: url(/images/hero/eclectus/lg/_Q5A4082.jpg)
+
+.slide:nth-child(15)
+  background-image: url(/images/hero/cockatoo/lg/_Q5A2694.jpg)
+
+.slide:nth-child(16)
+  background-image: url(/images/hero/cockatoo/lg/_Q5A2697.jpg)
 
 // hero fade in
 .is-js .slider::after
@@ -144,14 +182,12 @@ h1
 @media(min-width: $breakpoint-phone) and (max-width: $mediaBp1Width)
   .slider
   .slide
-  .hero
     position: relative
     width: auto
     height: 500px
     max-height: 65.1vw
 
   .slide
-  .hero
     background-image: url(/images/hero/hornbill-md.jpg)
 
 
@@ -163,13 +199,11 @@ h1
 
   .slider
   .slide
-  .hero
     position: relative
     height: 50vw
     max-height: none
 
   .slide
-  .hero
     background-image: url(/images/hero/hornbill-sm.jpg)
 
 //- end: Hero Unit
@@ -272,6 +306,7 @@ picture.quarter-col
     margin-top: (3 * $boxed-border)
     margin-left: auto
     margin-right: auto
+    width: auto
   .half-col:first-child
   .third-col:first-child
     margin-top: 0
@@ -449,15 +484,17 @@ dl.services
 
 .portrait
   img
-    border-radius: 50%
-    border-width: 3px
+    border-radius: 25%
+    border-width: 4px
     border-style: solid
+    // box-shadow: inset 0 0 2px #000000
   figure
     text-align: center
 
 .contact-form
+  margin-bottom: 3rem
   div
-    padding: 1rem 0 0
+    padding: 1rem 1rem 0 0
 
   label span
     display: block
@@ -466,10 +503,12 @@ dl.services
   input[type=text]
   input[type=email]
     width: 100%
+    box-sizing: border-box
 
   textarea
     width: 100%
-    height: 5rem
+    height: 6rem
+    box-sizing: border-box
 
 button.btn
   padding: 0 .6rem
