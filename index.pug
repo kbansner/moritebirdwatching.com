@@ -9,34 +9,19 @@ html
     #main
       header
         +navigation
-        .slider
-          .slide.slide1
-          .slide.slide2
-          .slide.slide3
-          .slide.slide4
-          .slide.slide5
-          .slide.slide6
-          .slide.slide7
-          .slide
-          .slide
-          .slide
-          .slide
-          .slide
-          .slide
-          .slide
-          .slide
-
+        +slider
       #intro.pg
         #headline
-          h1 Welcome to Morite Bird Watching, Seram Island!
+          h1 Welcome to Morite Bird Watching Tours, Seram Island!
 
         article
           .inner
-            p.heading.
-              The island of Seram, part of Wallacea, has unique flora and fauna due to blending of Asian and Australasian species. This island is also known as the home of the Moluccan cockatoo – a bird found nowhere else on earth. Seram Island is now one of the top destinations in Asia for bird watching.
+            p.heading
+              a(href='https://en.wikipedia.org/wiki/Seram_Island', target='wikipedia', title='Wikipedia') Seram Island
+              |&nbsp;is now one of the top destinations for bird watching in Asia. The Indonesian island of Seram, part of Wallacea, has unique flora and fauna due to blending of Asian and Australasian species. This island is also known as the home of the Moluccan cockatoo – a bird found nowhere else on earth. 
 
             p.
-              The villagers in Masihulan, on the northern coast of Seram, are aware of the vital role they play in protecting endangered birds from illegal trading. They are focusing on organizing bird watching tours instead of trapping and smuggling birds.
+              The villagers in Masihulan, on the northern coast of Seram, play a vital role in protecting endangered birds from illegal trading. They focus on organizing bird watching tours instead of trapping and smuggling birds.
 
       .pg
         .parallax
@@ -46,7 +31,7 @@ html
         article
           .inner
             p.heading.
-              Our local guides are available to tell you stories about Seram, its culture, its natural beauties and to introduce you to the life of the birds.
+              Our local guides are available to tell you stories about Seram, also known as the Mother Island, its culture, its natural beauties and to introduce you to the life of the birds.
             p.
               Book a tour with us and we will help you explore the nature and the birds of Seram, as well as giving you insight into the local values, custom and traditions.
 
@@ -54,10 +39,10 @@ html
         .parallax 
           picture
             -//source(srcset='images/IMG_5547.jpg', media='(max-width: 900px)') // this works!
-            img(class='lazyload', src='images/birds/eclectus-nest.jpg' width='1024', height='560', alt='')
+            img(class='lazyload', src='images/birds/cockatoo.jpg' width='1024', height='560', alt='')
         article
           .inner
-            h1 Birds from the Morite Region
+            h1 Birds from the Region
             p.
               These are some of the unique birds in the jungle here. All photos were taken by us or our clients.
           
@@ -87,17 +72,17 @@ html
             p
               |Other birds you are likely to see here are:
             ul
-              li Indoneasian Castrols
+              li Indonesian Castrols
               li Long Christ Mina
               li Coconut Lories
               li Rainbow Lories
 
-      .pg#services.reverse
+      .pg#tours.reverse
         article
           -//.inner
-          h1 Services
+          h1 Tours
           +service-nature-walks
-          +service-kambali-bekas
+          +service-kambali-bebas
           +service-viewing-platforms
           +service-canopy-platform-trips
           +service-expedition-cooking

@@ -82,6 +82,15 @@ footer
   background-repeat: no-repeat
   background-size: cover
   box-sizing: border-box
+  span.slide-caption
+    position: absolute
+    display: block
+    width: 100%
+    text-align: center
+    top: 49%
+    color: white
+    text-shadow: 1px 1px 5px black
+
 
 #headline
   margin: 2rem auto 0
@@ -104,7 +113,7 @@ h1
   height: 560px
   max-height: 70vw
 
-.slide1
+.slide14
   background-image: url(/images/hero/hornbill-lg.jpg)
 
 .slide2
@@ -122,31 +131,31 @@ h1
 .slide5
   background-image: url(/images/hero/cockatoo/lg/_Q5A2377.jpg)
 
+// .slide5
+//   background-image: url(/images/hero/eclectus/lg/_Q5A3304.jpg)
+
+// .slide:nth-child(6)
+//   background-image: url(/images/hero/eclectus/lg/_Q5A3600.jpg)
+
 .slide6
-  background-image: url(/images/hero/eclectus/lg/_Q5A3304.jpg)
-
-.slide:nth-child(7)
-  background-image: url(/images/hero/eclectus/lg/_Q5A3600.jpg)
-
-.slide:nth-child(8)
   background-image: url(/images/hero/eclectus/lg/_Q5A3607.jpg)
 
-.slide:nth-child(9)
-  background-image: url(/images/hero/eclectus/lg/_Q5A3616.jpg)
+// .slide:nth-child(9)
+//   background-image: url(/images/hero/eclectus/lg/_Q5A3616.jpg)
 
-.slide:nth-child(10)
+.slide7
   background-image: url(/images/hero/eclectus/lg/_Q5A3708.jpg)
 
-.slide:nth-child(11)
+.slide8
   background-image: url(/images/hero/eclectus/lg/_Q5A3979.jpg)
 
-.slide:nth-child(12)
+.slide9
   background-image: url(/images/hero/eclectus/lg/_Q5A4003.jpg)
 
-.slide:nth-child(13)
-  background-image: url(/images/hero/eclectus/lg/_Q5A4011.jpg)
+// .slide:nth-child(11)
+//   background-image: url(/images/hero/eclectus/lg/_Q5A4011.jpg)
 
-.slide:nth-child(14)
+.slide10
   background-image: url(/images/hero/eclectus/lg/_Q5A4012.jpg)
 
 // .slide:nth-child(15)
@@ -158,11 +167,17 @@ h1
 // .slide:nth-child(17)
 //   background-image: url(/images/hero/eclectus/lg/_Q5A4082.jpg)
 
-.slide:nth-child(15)
+.slide11
   background-image: url(/images/hero/cockatoo/lg/_Q5A2694.jpg)
 
-.slide:nth-child(16)
+.slide12
   background-image: url(/images/hero/cockatoo/lg/_Q5A2697.jpg)
+
+.slide13
+  background-image: url(/images/hero/cockatoo/lg/_Q5A6572.jpg)
+
+.slide1
+  background-image: url(/images/hero/cockatoo/lg/_Q5A6631.jpg)
 
 // hero fade in
 .is-js .slider::after
@@ -187,7 +202,7 @@ h1
     height: 500px
     max-height: 65.1vw
 
-  .slide
+  .slide14
     background-image: url(/images/hero/hornbill-md.jpg)
 
 
@@ -203,7 +218,7 @@ h1
     height: 50vw
     max-height: none
 
-  .slide
+  .slide14
     background-image: url(/images/hero/hornbill-sm.jpg)
 
 //- end: Hero Unit
@@ -218,10 +233,10 @@ article
   background-repeat: no-repeat
 
   a
-    color: #180;
-    text-decoration: none
-    &:hover
-      text-decoration: underline
+    // color: #180;
+    // text-decoration: none
+    // &:hover
+    //   text-decoration: underline
 
   img
     display: block
@@ -441,10 +456,11 @@ footer
   background-color: black !important
   color: white !important
 
-dl.services
-  overflow: hidden;
+.service
+  position: relative
+  overflow: hidden
   margin-top: 1rem
-  dt
+  .service-description
     float: left;
     display: block
     margin-bottom: 1rem
@@ -453,30 +469,58 @@ dl.services
     line-height: 1rem
     width: 30%
 
-  dd
-    // position: relative
+  .service-picture
     width: calc(70% - 1rem);
     float: right;
     // display: block
     margin-bottom: 3rem
     margin-left: 0
+    // background-image: linear-gradient(to right, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 99%);
+
     // figure
     //   position: absolute
     //   bottom: .5em
     // max-width: 450px
   @media(max-width: $breakpoint-tablet)
-    dt
-    dd
+    .service-description
+    .service-picture
       float: none
       width: auto
+
+.arrow-prev
+  position: absolute
+  left: calc(30% + 20px)
+  top: 0
+  bottom: 0
+  width: 40px
+  // background-color: orange
+  z-index: 10
+  cursor: pointer
+  background-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 40%)
+  // outline: 1px dotted white
+
+
+.arrow-next
+  position: absolute
+  right: 0
+  top: 0
+  bottom: 0
+  width: 40px
+  // background-color: orange
+  z-index: 10
+  cursor: pointer
+  background-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 40%)
+  // outline: 1px dotted white
+
 
 .gallery
   scroll-snap-type: x mandatory
   overflow-x: scroll
   display: flex
   // outline: 1px dotted blue
+
   picture
-    margin-right: 0.6rem
+    margin: 0 10px
     scroll-snap-align: center
     max-width: 450px
     img

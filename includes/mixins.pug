@@ -23,24 +23,37 @@ mixin link(href, name)
 
 mixin navigation
   nav
+    +link('#contact', 'Contact Us')
+    +link('#team', 'Team')
+    +link('#tours', 'Tours')
+    +link('#birds', 'Birds')
+
+mixin navigation-home
+  nav
     +link('index.html#contact', 'Contact Us')
     +link('index.html#team', 'Team')
-    +link('index.html#services', 'Services')
+    +link('index.html#tours', 'Tours')
     +link('index.html#birds', 'Birds')
+
+mixin slider
+  - var n = 1
+  .slider
+    while n < 15
+      .slide(class='slide'+n)
+        span.slide-caption= n++
 
 mixin footer
   footer
     nav
-      +link('javascript:$(\'#main\').scrollTop(0);', 'Top')
-      +link('#birds', 'Birds')
-      +link('#services', 'Services')
-      +link('#team', 'Team')
-
+      -//+link('javascript:$(\'#main\').scrollTop(0);', 'Top')
+      +link('#main', 'Top')
 
 mixin main-js
   script(src="http://code.jquery.com/jquery-2.2.4.min.js", integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=", crossorigin="anonymous")
   -//script(src="http://cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js")
   script(src="http://sachinchoolur.github.io/lightslider/dist/js/lightslider.js")
+  script(src='/js/smoothscroll-min.js')
+
 
   script(type='text/javascript').
     $(document).ready(function () { 
@@ -52,8 +65,8 @@ mixin main-js
           mode: 'slide',
           useCSS: true,
           cssEasing: 'ease',
-          speed: 1200,
-          pause: 10000,
+          speed: 1400,
+          pause: 8000,
           loop: true,
           auto: true,
           pager: false,
@@ -63,41 +76,74 @@ mixin main-js
       }, 1200); 
     });
     
+    $(document).ready(function () {
+      $('.service .arrow-prev').on('click', function(){
+        $(this).siblings('.gallery')[0].scrollBy({ left: -460, behavior: 'smooth' });
+      });
+      $('.service .arrow-next').on('click', function(){
+        $(this).siblings('.gallery')[0].scrollBy({ left: 460, behavior: 'smooth' });
+      });
+    });
+    // smooth scrolling hashtags
+    // Select all links with hashes
+    $(document).ready(function () {
+      $('a[href*="#"]')
+        // Remove links that don't actually link to anything
+        .click(function(event) {
+          // On-page links
+          if (
+            location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+            && 
+            location.hostname == this.hostname
+          ) {
+            // Figure out element to scroll to
+            var target = $(this.hash);
+            event.preventDefault();
+            $('#main')[0].scroll({top: target.offset().top, left: 0, behavior: 'smooth'})
+            target.focus();
+          }
+        });
+      });
 mixin service-picture(url, alt)
   picture
     img(src='images/services/'+url, width='450', height='300', alt=alt)
-    figure 
-      =alt
+    if alt
+      figure
+        =alt
 
 mixin service-nature-walks
-  dl.services
-    dt
+  .service
+    .arrow.arrow-prev
+    .arrow.arrow-next
+    .service-description
       b Guided Nature Walks
       p.
-        We will take you for a walk between villages where we’ll point out local fora fauna and farming techinques. Bring your binoculars as we are very likely to see birds along the way. Trips can be tailored to your specific interests and energy level.
+        We will take you for a walk between villages where we’ll point out local flora, fauna and farming techniques. Bring your binoculars as we are very likely to see birds along the way. Trips can be tailored to your specific interests and energy level.
       p
         |Group size: No limit
         br
         |Duration: 3 - 6 hours
-    dd.gallery
-      +service-picture('walks/walk.jpg', 'Road works')
+    .service-picture.gallery
       +service-picture('walks/jungle-walk.jpg')
       +service-picture('walks/2837200843_d605f0b9f4_o.jpg')
       +service-picture('walks/2837324099_9618887ca9_o.jpg')
       +service-picture('walks/IMG_9920.jpg')
       +service-picture('walks/R0016007.jpg')
+      
 
-mixin service-kambali-bekas
-  dl.services
-    dt
-      b Visit to the Bird Rehabilation Center (Kambali Bekas)
+mixin service-kambali-bebas
+  .service
+    .arrow.arrow-prev
+    .arrow.arrow-next
+    .service-description
+      b Visit to the Bird Rehabilitation Center (Kambali Bebas)
       p.
-        The Rehabilation Center is a must see for all bird lovers visiting the area. The center houses wild caught parrots recovered from the illegal pet trade. Birds that can survive in the wild and are deemed healthy are released back to the jungles they came from.
+        The Rehabilitation Center is a must-see for all bird lovers visiting the area. The center houses wild caught parrots recovered from the illegal pet trade. Birds that can survive in the wild and are deemed healthy are released back to the jungles they came from.
       p 
         |Group size: No limit
         br
         |Duration: 1 hour
-    dd.gallery
+    .service-picture.gallery
       +service-picture('kambali-bekas/_Q5A3005.jpg', 'Moluccan Cockatoos waiting to be released')
       +service-picture('kambali-bekas/_Q5A3009.jpg')
       +service-picture('kambali-bekas/_Q5A3015.jpg')
@@ -107,30 +153,34 @@ mixin service-kambali-bekas
       +service-picture('kambali-bekas/IMG_1160.jpg', "Jacob says, “Saya lapar, Saya lapar (I’m hungry)”")
 
 mixin service-viewing-platforms
-  dl.services
-    dt
+  .service
+    .arrow.arrow-prev
+    .arrow.arrow-next
+    .service-description
       b Vist to Viewing Platforms
-      p Above the village of Masihoulan are two viewing platforms sourounded by parrots nests. It’s a steep 15 minute hike up from the main road, but once you’re there the view is spectacular.
+      p Above the village of Masihulan are two viewing platforms sourounded by parrots' nests. It’s a steep 15 minute hike up from the main road, but once you’re there the view is spectacular.
       p
         |Group size: up to 20 people
         br
         |Duration: 1 - 3 hours
-    dd.gallery
+    .service-picture.gallery
       +service-picture('viewing-platforms/viewing-platform.jpg')
       +service-picture('viewing-platforms/20171028_165122.jpg')
       +service-picture('viewing-platforms/20171028_165240.jpg')
 
 mixin service-canopy-platform-trips
-  dl.services
-    dt
+  .service
+    .arrow.arrow-prev
+    .arrow.arrow-next
+    .service-description
       b Canopy Platform Trips
       p.
-        Sleep in a tree. Wake up before dawn to watch the neighboring parrots begin their day by streching and preening.
+        Sleep in a tree. Wake up before dawn to watch the neighboring parrots begin their day by stretching and preening.
       p 
         |Group size: up to 10 people
         br
         |Duration: Several hours to overnight
-    dd.gallery
+    .service-picture.gallery
       +service-picture('canopy-platform-trips/2838228186_c98768c564_o.jpg')
       +service-picture('canopy-platform-trips/IMG_2918.jpg')
       +service-picture('canopy-platform-trips/IMG_5740.jpg')
@@ -144,12 +194,14 @@ mixin service-canopy-platform-trips
       +service-picture('canopy-platform-trips/_Q5A7023.jpg')
 
 mixin service-expedition-cooking
-  dl.services
-    dt
+  .service
+    .arrow.arrow-prev
+    .arrow.arrow-next
+    .service-description
       b Expedition Cooking
       p.
-        Restured, if you take multi-day with us we’ll feed you well. There are some great cooks among the guides. They may even go foreging or hunting for fresh food to spice up your meals.
-    dd.gallery
+        Rest assured, if you take a multi-day trip with us we’ll feed you well. There are some great cooks among the guides. They may even go foraging or hunting for fresh food to spice up your meals.
+    .service-picture.gallery
       +service-picture('cooking/_MG_1635.jpg')
       +service-picture('cooking/_Q5A2960.jpg')
       +service-picture('cooking/IMG_1293.jpg')
@@ -157,15 +209,17 @@ mixin service-expedition-cooking
       +service-picture('cooking/R0015966.jpg')
 
 mixin service-api-lima
-  dl.services
-    dt
+  .service
+    .arrow.arrow-prev
+    .arrow.arrow-next
+    .service-description
       b Api Lima
       p 
         |Group size: up to 6 people
         br
         |Duration: 2 days
     
-    dd.gallery
+    .service-picture.gallery
       +service-picture('api-lima/R0015611.jpg')
       +service-picture('api-lima/IMG_1340.jpg')
       +service-picture('api-lima/2837302547_3c94b02bfb_o.jpg')
@@ -176,16 +230,17 @@ mixin service-api-lima
       +service-picture('api-lima/R0015973.jpg')
 
 mixin service-custom-tree-platforms
-  dl.services
-    dt
+  .service
+    .arrow.arrow-prev
+    .arrow.arrow-next
+    .service-description
       b Custom Tree Platforms
-      
       p 
         |Group size: 2 people
         br
         |Duration: 3 - 5 days
 
-    dd.gallery
+    .service-picture.gallery
       +service-picture('custom-platforms/IMG_1428.jpg')
       +service-picture('custom-platforms/IMG_1437.jpg')
       +service-picture('custom-platforms/20171028_165240.jpg')
@@ -194,14 +249,16 @@ mixin service-custom-tree-platforms
       +service-picture('custom-platforms/custom-platform.jpg')
 
 mixin service-trekking
-  dl.services
-    dt
+  .service
+    .arrow.arrow-prev
+    .arrow.arrow-next
+    .service-description
       b Trekking Across Seram
       p 
         |Group size: up to 6 people
         br
         |Duration: 7 days
-    dd.gallery
+    service-picture.gallery
       +service-picture('trekking/R0016157.jpg')
       +service-picture('trekking/R0016168.jpg')
       +service-picture('trekking/R0016172.jpg')
@@ -224,5 +281,8 @@ mixin service-trekking
 mixin team-portrait(url, alt)
   picture.quarter-col.portrait
     img(class='lazyload', src='images/team/'+url, width='80', height='100', alt=alt)
-    figure
-     =alt
+    if alt
+      figure
+        =alt
+    else 
+      figure &nbsp;
