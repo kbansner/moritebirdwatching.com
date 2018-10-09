@@ -10,7 +10,7 @@ mixin head(pageTitle)
     gtag('config', 'UA-126209656-1');
 
   link(href='https://fonts.googleapis.com/css?family=EB+Garamond|Ovo' rel='stylesheet')
-  link(href='http://sachinchoolur.github.io/lightslider/dist/css/lightslider.css' rel='stylesheet')
+  -//link(href='http://sachinchoolur.github.io/lightslider/dist/css/lightslider.css' rel='stylesheet')
   link(href='/css/normalize-min.css', rel='stylesheet', type='text/css')
   link(href='/css/main.css', rel='stylesheet', type='text/css')
   title 
@@ -51,32 +51,37 @@ mixin footer
 mixin main-js
   script(src="http://code.jquery.com/jquery-2.2.4.min.js", integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=", crossorigin="anonymous")
   -//script(src="http://cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js")
-  script(src="http://sachinchoolur.github.io/lightslider/dist/js/lightslider.js")
+  -//script(src="http://sachinchoolur.github.io/lightslider/dist/js/lightslider.js")
   script(src='/js/smoothscroll-min.js')
 
 
   script(type='text/javascript').
-    $(document).ready(function () { 
+    var timer, mousein = false, delay = 5000;
+    var slideNext = function() {
+      var slide = $('.slider')[0];
+      slide.scrollBy({ left: slide.clientWidth, behavior: 'smooth' });
+    }
+    var scroller = function(){
+      if (!mousein) {
+        slideNext();
+      }
+      timer = setTimeout(scroller, delay);
+    }
+
+    $(document).ready(function() { 
       $('#main').addClass('is-js');
       setTimeout(function(){
-        $('.slider').addClass('loaded')
-        $('.slider').lightSlider({
-          item: 1,
-          mode: 'slide',
-          useCSS: true,
-          cssEasing: 'ease',
-          speed: 1400,
-          pause: 8000,
-          loop: true,
-          auto: true,
-          pager: false,
-          gallery: false,
-          slideMargin: 0
-        });
-      }, 1200); 
+        $('.slider')
+          .addClass('loaded');
+      }, 1200);
+      setTimeout(scroller, 6200);
+      $('.slider')
+        .on('mouseenter', function(){mousein = true;})
+        .on('mouseout', function(){mousein = false;})
     });
-    
-    $(document).ready(function () {
+
+    $(document).ready(function() {
+      $('.slide').on('click', slideNext)
       $('.service .arrow-prev').on('click', function(){
         $(this).siblings('.gallery')[0].scrollBy({ left: -460, behavior: 'smooth' });
       });
@@ -86,7 +91,7 @@ mixin main-js
     });
     // smooth scrolling hashtags
     // Select all links with hashes
-    $(document).ready(function () {
+    $(document).ready(function() {
       $('a[href*="#"]')
         // Remove links that don't actually link to anything
         .click(function(event) {
