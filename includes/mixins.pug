@@ -56,32 +56,36 @@ mixin main-js
 
 
   script(type='text/javascript').
-    var timer, mousein = false, delay = 5000;
-    var slideNext = function() {
-      var slide = $('.slider')[0];
-      slide.scrollBy({ left: slide.clientWidth, behavior: 'smooth' });
-    }
-    var scroller = function(){
-      if (!mousein) {
-        slideNext();
-      }
-      timer = setTimeout(scroller, delay);
-    }
-
-    $(document).ready(function() { 
-      $('#main').addClass('is-js');
-      setTimeout(function(){
-        $('.slider')
-          .addClass('loaded');
-      }, 1200);
-      setTimeout(scroller, 6200);
-      $('.slider')
-        .on('mouseenter', function(){mousein = true;})
-        .on('mouseout', function(){mousein = false;})
-    });
-
     $(document).ready(function() {
+      var timer, mousein = false, delay = 5000;
+      var slideNext = function() {
+        var slider = $('.slider')[0];
+        slider.scrollBy({ left: slider.clientWidth, behavior: 'smooth' });
+      }
+      var scroller = function(){
+        if (!mousein) {
+          slideNext();
+        }
+        console.log('timer', timer)
+        timer = setTimeout(scroller, delay);
+      }
+      setTimeout(scroller, 6200);
+
+      var setEnter = function(){
+        mousein = true;
+        console.log('enter')
+      }
+      var setOut = function(){
+        mousein = false;
+        console.log('out')
+      }
+      $('.slider')
+        .on('mouseenter', setEnter)
+        .on('mouseout', setOut)
+        .on('mousedown', function(){clearTimeout(timer); console.log('end timer')})
       $('.slide').on('click', slideNext)
+
+
       $('.service .arrow-prev').on('click', function(){
         $(this).siblings('.gallery')[0].scrollBy({ left: -460, behavior: 'smooth' });
       });
@@ -89,6 +93,15 @@ mixin main-js
         $(this).siblings('.gallery')[0].scrollBy({ left: 460, behavior: 'smooth' });
       });
     });
+
+    $(document).ready(function() { 
+      $('#main').addClass('is-js');
+      setTimeout(function(){
+        $('.slider')
+          .addClass('loaded');
+      }, 1200);
+    });
+
     // smooth scrolling hashtags
     // Select all links with hashes
     $(document).ready(function() {
