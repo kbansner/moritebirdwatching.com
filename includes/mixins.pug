@@ -12,6 +12,7 @@ mixin head(pageTitle)
   link(href='https://fonts.googleapis.com/css?family=EB+Garamond|Ovo' rel='stylesheet')
   -//link(href='http://sachinchoolur.github.io/lightslider/dist/css/lightslider.css' rel='stylesheet')
   link(href='/css/normalize-min.css', rel='stylesheet', type='text/css')
+  -//link(href='/css/snapper.css', rel='stylesheet', type='text/css')
   link(href='/css/main.css', rel='stylesheet', type='text/css')
   title 
     |Morite Birdwatching: 
@@ -42,6 +43,15 @@ mixin slider
       .slide(class='slide'+n)
         span.slide-caption= n++
 
+mixin snapper
+  - var n = 1
+  .snapper
+    .snapper_pane_crop
+      .snapper_pane
+        .snapper_items
+          while n < 2
+            .snapper_item(id='slide'+n)
+
 mixin footer
   footer
     nav
@@ -53,38 +63,11 @@ mixin main-js
   -//script(src="http://cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js")
   -//script(src="http://sachinchoolur.github.io/lightslider/dist/js/lightslider.js")
   script(src='/js/smoothscroll-min.js')
+  -//script(src='/js/snapper.js')
 
 
   script(type='text/javascript').
     $(document).ready(function() {
-      var timer, mousein = false, delay = 5000;
-      var slideNext = function() {
-        var slider = $('.slider')[0];
-        slider.scrollBy({ left: slider.clientWidth, behavior: 'smooth' });
-      }
-      var scroller = function(){
-        if (!mousein) {
-          slideNext();
-        }
-        console.log('timer', timer)
-        timer = setTimeout(scroller, delay);
-      }
-      setTimeout(scroller, 6200);
-
-      var setEnter = function(){
-        mousein = true;
-        console.log('enter')
-      }
-      var setOut = function(){
-        mousein = false;
-        console.log('out')
-      }
-      $('.slider')
-        .on('mouseenter', setEnter)
-        .on('mouseout', setOut)
-        .on('mousedown', function(){clearTimeout(timer); console.log('end timer')})
-      $('.slide').on('click', slideNext)
-
 
       $('.service .arrow-prev').on('click', function(){
         $(this).siblings('.gallery')[0].scrollBy({ left: -460, behavior: 'smooth' });
