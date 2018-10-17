@@ -12,7 +12,7 @@ mixin head(pageTitle)
   link(href='https://fonts.googleapis.com/css?family=EB+Garamond|Ovo' rel='stylesheet')
   -//link(href='http://sachinchoolur.github.io/lightslider/dist/css/lightslider.css' rel='stylesheet')
   link(href='/css/normalize-min.css', rel='stylesheet', type='text/css')
-  -//link(href='/css/snapper.css', rel='stylesheet', type='text/css')
+  link(href='/css/snapper.css', rel='stylesheet', type='text/css')
   link(href='/css/main.css', rel='stylesheet', type='text/css')
   title 
     |Morite Birdwatching: 
@@ -45,13 +45,12 @@ mixin slider
 
 mixin snapper
   - var n = 1
-  .snapper
-    .snapper_pane_crop
-      .snapper_pane
-        .snapper_items
-          while n < 2
-            .snapper_item(id='slide'+n)
-
+  .snapper(data-snapper-autoplay='2000')
+    .snapper_pane
+      .snapper_items
+        while n < 6
+          .snapper_item(class='slide'+n)
+          - n++
 mixin footer
   footer
     nav
@@ -63,7 +62,23 @@ mixin main-js
   -//script(src="http://cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js")
   -//script(src="http://sachinchoolur.github.io/lightslider/dist/js/lightslider.js")
   script(src='/js/smoothscroll-min.js')
-  -//script(src='/js/snapper.js')
+  script(src='/js/snapper.js')
+  script(type='text/javascript').
+    $(document).ready(function() {
+      /* $('.snapper').snapper(); */
+      document.documentElement.className += "enhanced";
+      $(function(){
+        $( document ).trigger( "enhance" );
+      });
+
+    });
+    /* snapper css snap points carousel */
+    ;(function( w, $ ){
+    	// auto-init on enhance
+    	$( document ).bind( "enhance", function( e ){
+    		$( ".snapper", e.target ).add( e.target ).filter( ".snapper" ).snapper();
+    	});
+    }( this, jQuery ));
 
 
   script(type='text/javascript').
