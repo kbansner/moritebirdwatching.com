@@ -50,42 +50,37 @@ mixin footer
 
 mixin main-js
   script(src="http://code.jquery.com/jquery-2.2.4.min.js", integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=", crossorigin="anonymous")
-  -//script(src="http://cdn.jsdelivr.net/jquery.slick/1.5.0/slick.min.js")
-  -//script(src="http://sachinchoolur.github.io/lightslider/dist/js/lightslider.js")
   script(src='/js/smoothscroll-min.js')
-
 
   script(type='text/javascript').
     $(document).ready(function() {
-      var timer, mousein = false, delay = 5000;
+      var timer, pause = false, delay = 7000;
       var slideNext = function() {
         var slider = $('.slider')[0];
         slider.scrollBy({ left: slider.clientWidth, behavior: 'smooth' });
       }
       var scroller = function(){
-        if (!mousein) {
+        if (!pause) {
           slideNext();
         }
-        console.log('timer', timer)
-        timer = setTimeout(scroller, delay);
       }
-      setTimeout(scroller, 6200);
+      timer = setInterval(scroller, delay);
 
-      var setEnter = function(){
-        mousein = true;
-        console.log('enter')
+      var setPause = function(){
+        pause = true;
       }
-      var setOut = function(){
-        mousein = false;
-        console.log('out')
+      var unsetPause = function(){
+        pause = false;
+        console.log('back')
       }
-      $('.slider')
-        .on('mouseenter', setEnter)
-        .on('mouseout', setOut)
-        .on('mousedown', function(){clearTimeout(timer); console.log('end timer')})
-      $('.slide').on('click', slideNext)
 
-
+      $('.slider')[0].addEventListener('wheel', (e) => {
+        if (e.deltaX > 10 || e.deltaX < 10) {
+          setPause()
+        }
+      });
+      $('.slider').on('mouseenter', unsetPause)
+      
       $('.service .arrow-prev').on('click', function(){
         $(this).siblings('.gallery')[0].scrollBy({ left: -460, behavior: 'smooth' });
       });
@@ -131,8 +126,6 @@ mixin service-picture(url, alt)
 
 mixin service-nature-walks
   .service
-    .arrow.arrow-prev
-    .arrow.arrow-next
     .service-description
       b Guided Nature Walks
       p.
@@ -141,18 +134,19 @@ mixin service-nature-walks
         |Group size: No limit
         br
         |Duration: 3 - 6 hours
-    .service-picture.gallery
-      +service-picture('walks/jungle-walk.jpg')
-      +service-picture('walks/2837200843_d605f0b9f4_o.jpg')
-      +service-picture('walks/2837324099_9618887ca9_o.jpg')
-      +service-picture('walks/IMG_9920.jpg')
-      +service-picture('walks/R0016007.jpg')
+    .service-picture
+      .arrow.arrow-prev
+      .arrow.arrow-next
+      .gallery
+        +service-picture('walks/jungle-walk.jpg')
+        +service-picture('walks/2837200843_d605f0b9f4_o.jpg')
+        +service-picture('walks/2837324099_9618887ca9_o.jpg')
+        +service-picture('walks/IMG_9920.jpg')
+        +service-picture('walks/R0016007.jpg')
       
 
 mixin service-kambali-bebas
   .service
-    .arrow.arrow-prev
-    .arrow.arrow-next
     .service-description
       b Visit to the Bird Rehabilitation Center (Kambali Bebas)
       p.
@@ -161,19 +155,20 @@ mixin service-kambali-bebas
         |Group size: No limit
         br
         |Duration: 1 hour
-    .service-picture.gallery
-      +service-picture('kambali-bekas/_Q5A3005.jpg', 'Moluccan Cockatoos waiting to be released')
-      +service-picture('kambali-bekas/_Q5A3009.jpg')
-      +service-picture('kambali-bekas/_Q5A3015.jpg')
-      +service-picture('kambali-bekas/_Q5A3024.jpg')
-      +service-picture('kambali-bekas/_Q5A3094.jpg')
-      +service-picture('kambali-bekas/_Q5A3100.jpg')
-      +service-picture('kambali-bekas/IMG_1160.jpg', "Jacob says, “Saya lapar, Saya lapar (I’m hungry)”")
+    .service-picture
+      .arrow.arrow-prev
+      .arrow.arrow-next
+      .gallery
+        +service-picture('kambali-bekas/_Q5A3005.jpg', 'Moluccan Cockatoos waiting to be released')
+        +service-picture('kambali-bekas/_Q5A3009.jpg')
+        +service-picture('kambali-bekas/_Q5A3015.jpg')
+        +service-picture('kambali-bekas/_Q5A3024.jpg')
+        +service-picture('kambali-bekas/_Q5A3094.jpg')
+        +service-picture('kambali-bekas/_Q5A3100.jpg')
+        +service-picture('kambali-bekas/IMG_1160.jpg', "Jacob says, “Saya lapar, Saya lapar (I’m hungry)”")
 
 mixin service-viewing-platforms
   .service
-    .arrow.arrow-prev
-    .arrow.arrow-next
     .service-description
       b Vist to Viewing Platforms
       p Above the village of Masihulan are two viewing platforms sourounded by parrots' nests. It’s a steep 15 minute hike up from the main road, but once you’re there the view is spectacular.
@@ -181,15 +176,16 @@ mixin service-viewing-platforms
         |Group size: up to 20 people
         br
         |Duration: 1 - 3 hours
-    .service-picture.gallery
-      +service-picture('viewing-platforms/viewing-platform.jpg')
-      +service-picture('viewing-platforms/20171028_165122.jpg')
-      +service-picture('viewing-platforms/20171028_165240.jpg')
+    .service-picture
+      .arrow.arrow-prev
+      .arrow.arrow-next
+      .gallery
+        +service-picture('viewing-platforms/viewing-platform.jpg')
+        +service-picture('viewing-platforms/20171028_165122.jpg')
+        +service-picture('viewing-platforms/20171028_165240.jpg')
 
 mixin service-canopy-platform-trips
   .service
-    .arrow.arrow-prev
-    .arrow.arrow-next
     .service-description
       b Canopy Platform Trips
       p.
@@ -198,38 +194,40 @@ mixin service-canopy-platform-trips
         |Group size: up to 10 people
         br
         |Duration: Several hours to overnight
-    .service-picture.gallery
-      +service-picture('canopy-platform-trips/2838228186_c98768c564_o.jpg')
-      +service-picture('canopy-platform-trips/IMG_2918.jpg')
-      +service-picture('canopy-platform-trips/IMG_5740.jpg')
-      +service-picture('canopy-platform-trips/IMG_3167.jpg')
-      +service-picture('canopy-platform-trips/2821196152_7e3c4c92b5_o.jpg')
-      +service-picture('canopy-platform-trips/2837183795_20097d5b7e_o.jpg')
-      -//picture
-        -//img(src='images/services/canopy-platform-trips/2838013842_6e7b1cbccc_o.jpg', width='450', height='300', alt='')
-      +service-picture('canopy-platform-trips/2838055094_4f66aee101_o.jpg')
-      +service-picture('canopy-platform-trips/R0016811.jpg')
-      +service-picture('canopy-platform-trips/_Q5A7023.jpg')
+    .service-picture
+      .arrow.arrow-prev
+      .arrow.arrow-next
+      .gallery
+        +service-picture('canopy-platform-trips/2838228186_c98768c564_o.jpg')
+        +service-picture('canopy-platform-trips/IMG_2918.jpg')
+        +service-picture('canopy-platform-trips/IMG_5740.jpg')
+        +service-picture('canopy-platform-trips/IMG_3167.jpg')
+        +service-picture('canopy-platform-trips/2821196152_7e3c4c92b5_o.jpg')
+        +service-picture('canopy-platform-trips/2837183795_20097d5b7e_o.jpg')
+        -//picture
+          -//img(src='images/services/canopy-platform-trips/2838013842_6e7b1cbccc_o.jpg', width='450', height='300', alt='')
+        +service-picture('canopy-platform-trips/2838055094_4f66aee101_o.jpg')
+        +service-picture('canopy-platform-trips/R0016811.jpg')
+        +service-picture('canopy-platform-trips/_Q5A7023.jpg')
 
 mixin service-expedition-cooking
   .service
-    .arrow.arrow-prev
-    .arrow.arrow-next
     .service-description
       b Expedition Cooking
       p.
         Rest assured, if you take a multi-day trip with us we’ll feed you well. There are some great cooks among the guides. They may even go foraging or hunting for fresh food to spice up your meals.
-    .service-picture.gallery
-      +service-picture('cooking/_MG_1635.jpg')
-      +service-picture('cooking/_Q5A2960.jpg')
-      +service-picture('cooking/IMG_1293.jpg')
-      +service-picture('cooking/IMG_1374.jpg')
-      +service-picture('cooking/R0015966.jpg')
+    .service-picture
+      .arrow.arrow-prev
+      .arrow.arrow-next
+      .gallery
+        +service-picture('cooking/_MG_1635.jpg')
+        +service-picture('cooking/_Q5A2960.jpg')
+        +service-picture('cooking/IMG_1293.jpg')
+        +service-picture('cooking/IMG_1374.jpg')
+        +service-picture('cooking/R0015966.jpg')
 
 mixin service-api-lima
   .service
-    .arrow.arrow-prev
-    .arrow.arrow-next
     .service-description
       b Api Lima
       p 
@@ -237,20 +235,21 @@ mixin service-api-lima
         br
         |Duration: 2 days
     
-    .service-picture.gallery
-      +service-picture('api-lima/R0015611.jpg')
-      +service-picture('api-lima/IMG_1340.jpg')
-      +service-picture('api-lima/2837302547_3c94b02bfb_o.jpg')
-      +service-picture('api-lima/IMG_2757.jpg')
-      +service-picture('api-lima/IMG_2886.jpg')
-      +service-picture('api-lima/R0015672.jpg')
-      +service-picture('api-lima/R0015706.jpg')
-      +service-picture('api-lima/R0015973.jpg')
+    .service-picture
+      .arrow.arrow-prev
+      .arrow.arrow-next
+      .gallery
+        +service-picture('api-lima/R0015611.jpg')
+        +service-picture('api-lima/IMG_1340.jpg')
+        +service-picture('api-lima/2837302547_3c94b02bfb_o.jpg')
+        +service-picture('api-lima/IMG_2757.jpg')
+        +service-picture('api-lima/IMG_2886.jpg')
+        +service-picture('api-lima/R0015672.jpg')
+        +service-picture('api-lima/R0015706.jpg')
+        +service-picture('api-lima/R0015973.jpg')
 
 mixin service-custom-tree-platforms
   .service
-    .arrow.arrow-prev
-    .arrow.arrow-next
     .service-description
       b Custom Tree Platforms
       p 
@@ -258,43 +257,47 @@ mixin service-custom-tree-platforms
         br
         |Duration: 3 - 5 days
 
-    .service-picture.gallery
-      +service-picture('custom-platforms/IMG_1428.jpg')
-      +service-picture('custom-platforms/IMG_1437.jpg')
-      +service-picture('custom-platforms/20171028_165240.jpg')
-      +service-picture('custom-platforms/_Q5A4034.jpg')
-      +service-picture('custom-platforms/IMG_1448.jpg')
-      +service-picture('custom-platforms/custom-platform.jpg')
+    .service-picture
+      .arrow.arrow-prev
+      .arrow.arrow-next
+      .gallery
+        +service-picture('custom-platforms/IMG_1428.jpg')
+        +service-picture('custom-platforms/IMG_1437.jpg')
+        +service-picture('custom-platforms/20171028_165240.jpg')
+        +service-picture('custom-platforms/_Q5A4034.jpg')
+        +service-picture('custom-platforms/IMG_1448.jpg')
+        +service-picture('custom-platforms/custom-platform.jpg')
 
 mixin service-trekking
   .service
-    .arrow.arrow-prev
-    .arrow.arrow-next
     .service-description
       b Trekking Across Seram
       p 
         |Group size: up to 6 people
         br
         |Duration: 7 days
-    service-picture.gallery
-      +service-picture('trekking/R0016157.jpg')
-      +service-picture('trekking/R0016168.jpg')
-      +service-picture('trekking/R0016172.jpg')
-      +service-picture('trekking/R0016403.jpg')
-      +service-picture('trekking/R0016185.jpg')
-      +service-picture('trekking/R0016283.jpg')
-      +service-picture('trekking/R0016341.jpg')
-      +service-picture('trekking/R0016342.jpg')
-      +service-picture('trekking/R0016373.jpg')
-      +service-picture('trekking/R0016386.jpg')
-      +service-picture('trekking/IMG_3063.jpg', 'Cockatoo')
-      +service-picture('trekking/R0016399.jpg')
-      +service-picture('trekking/R0016432.jpg')
-      +service-picture('trekking/R0016433.jpg', 'Departing Manusella Village')
-      +service-picture('trekking/R0016595.jpg')
-      +service-picture('trekking/R0016624.jpg')
-      +service-picture('trekking/R0016734.jpg')
-      +service-picture('trekking/R0016736.jpg')
+    .service-picture
+      .arrow.arrow-prev
+      .arrow.arrow-next
+      .gallery
+        +service-picture('trekking/R0016157.jpg')
+        +service-picture('trekking/R0016168.jpg')
+        +service-picture('trekking/R0016172.jpg')
+        +service-picture('trekking/R0016403.jpg')
+        +service-picture('trekking/R0016185.jpg')
+        +service-picture('trekking/R0016283.jpg')
+        +service-picture('trekking/R0016341.jpg')
+        +service-picture('trekking/R0016342.jpg')
+        +service-picture('trekking/R0016373.jpg')
+        +service-picture('trekking/R0016386.jpg')
+        +service-picture('trekking/IMG_3063.jpg', 'Cockatoo')
+        +service-picture('trekking/R0016399.jpg')
+        +service-picture('trekking/R0016432.jpg')
+        +service-picture('trekking/R0016433.jpg', 'Departing Manusella Village')
+        +service-picture('trekking/R0016595.jpg')
+        +service-picture('trekking/R0016624.jpg')
+        +service-picture('trekking/R0016734.jpg')
+        +service-picture('trekking/R0016736.jpg')
 
 mixin team-portrait(url, alt)
   picture.quarter-col.portrait

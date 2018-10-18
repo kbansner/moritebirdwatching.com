@@ -112,7 +112,6 @@ h1
   overflow-x: scroll
   scroll-snap-points-x: repeat(100%);
   scroll-snap-destination: 0% 100%;
-  outline: 1px dotted blue
 
 .slide
   scroll-snap-align: center
@@ -477,7 +476,8 @@ footer
     width: 30%
 
   .service-picture
-    width: calc(70% - 1rem);
+    position: relative
+    width: calc(70% - 1rem)
     float: right;
     // display: block
     margin-bottom: 3rem
@@ -496,7 +496,7 @@ footer
 
 .arrow-prev
   position: absolute
-  left: calc(30% + 20px)
+  left: 0
   top: 0
   bottom: 0
   width: 40px
