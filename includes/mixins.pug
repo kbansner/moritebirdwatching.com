@@ -38,8 +38,9 @@ mixin navigation-home
 mixin slider
   - var n = 1
   .slider
-    while n < 15
-      .slide(class='slide'+n)
+    while n < 13
+      .slide
+        .slide-background(class='slide'+n)
         span.slide-caption= n++
 
 mixin footer
