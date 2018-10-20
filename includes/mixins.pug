@@ -86,10 +86,15 @@ mixin main-js
 
 
       observer = new IntersectionObserver(entries => {
+        var x = 60;
+        var s = 1.2;
         entries.forEach(entry => {
           if (entry.intersectionRatio > 0) {
             console.log('in the view', entry);
             $(entry.target).addClass('on');
+            s = Math.random() / 6 + 1.1;
+            x = parseInt(Math.random() * 30 + 30) + 'px';
+            setCssProperties(entry.target, x, s);
           } else {
             console.log('out of view');
             $(entry.target).removeClass('on');
@@ -101,6 +106,11 @@ mixin main-js
         observer.observe(image);
       });
       
+      function setCssProperties(ele, x, s) {
+        console.log('props', x, s)
+        ele.style.setProperty('--x-factor', x);
+        ele.style.setProperty('--scale-factor', s);
+      }
       
       $('.service .arrow-prev').on('click', function(){
         $(this).siblings('.gallery')[0].scrollBy({ left: -460, behavior: 'smooth' });

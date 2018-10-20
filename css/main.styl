@@ -123,6 +123,12 @@ h1
   // overflow: hidden
   backface-visibility: hidden
 
+:root
+  --scale-factor: 1.190972308167332;
+  --x-factor: 60px;
+  --scale-factor: 1;
+  --x-factor: 0px;
+  --transform-duration: 6s;
 
 .slide .slide-background
   position: absolute
@@ -136,14 +142,14 @@ h1
   transform: translate3d(0,0,0) scale(1)
 
 .on.slide:nth-child(odd) .slide-background
-  transform: translate3d(-60px,10px,0) scale(1.1) rotate(-0.3deg);
-  transition: 6s transform
-  // transition-delay: 1s
+  transform: translate3d(calc(var(--x-factor) * -1),10px,0) scale(var(--scale-factor)) rotate(-0.3deg);
+  transition: var(--transform-duration) transform
+  transition-delay: 1s
 
 .on.slide:nth-child(even) .slide-background
-  transform: translate3d(40px,10px,0) scale(1.1) rotate(0.3deg);
-  transition: 6s transform
-  // transition-delay: 1s
+  transform: translate3d(var(--x-factor),10px,0) scale(var(--scale-factor)) rotate(0.3deg);
+  transition: var(--transform-duration) transform
+  transition-delay: 1s
 
 .slide1
   background-image: url(/images/hero/cockatoo/lg/_Q5A6631.jpg)
