@@ -3,6 +3,9 @@ include includes/mixins.pug
 doctype html
 html
   head
+    meta(name="description", content="Birdwatching tours of Seram, home to the Moluccan Cockatoos")
+    meta(name="keywords", content="Birdwatching, Seram, Cockatoo, Moluccan Cockatoo, Seram Cockatoo, Sawai, Masihulan, Indoneasia")
+
     +head('Welcome')
 
   body#welcome
@@ -78,16 +81,15 @@ html
 
       .pg#tours.reverse
         article
-          -//.inner
-          h1 Tours
-          +service-nature-walks
-          +service-kambali-bebas
-          +service-viewing-platforms
-          +service-canopy-platform-trips
-          +service-expedition-cooking
-          +service-api-lima
-          +service-custom-tree-platforms
-          +service-trekking
+          .padded
+            h1 Tours
+            +service-nature-walks
+            +service-kambali-bebas
+            +service-viewing-platforms
+            +service-canopy-platform-trips
+            +service-api-lima
+            +service-custom-tree-platforms
+            +service-trekking
 
       .pg#team
         article
