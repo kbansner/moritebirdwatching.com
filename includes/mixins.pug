@@ -10,7 +10,6 @@ mixin head(pageTitle)
     gtag('config', 'UA-126209656-1');
 
   link(href='https://fonts.googleapis.com/css?family=EB+Garamond|Ovo' rel='stylesheet')
-  -//link(href='http://sachinchoolur.github.io/lightslider/dist/css/lightslider.css' rel='stylesheet')
   link(href='/css/normalize-min.css', rel='stylesheet', type='text/css')
   link(href='/css/main.css', rel='stylesheet', type='text/css')
   title 
@@ -51,6 +50,7 @@ mixin footer
 
 mixin main-js
   script(src="http://code.jquery.com/jquery-2.2.4.min.js", integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=", crossorigin="anonymous")
+  script(src='/js/intersection-observer-min.js')
   script(src='/js/smoothscroll-min.js')
 
   script(type='text/javascript').
@@ -72,7 +72,7 @@ mixin main-js
       }
       var unsetPause = function(){
         pause = false;
-        console.log('back')
+        /* console.log('unsetPause') */
       }
 
       $('.slider')[0].addEventListener('wheel', (e) => {
@@ -81,6 +81,26 @@ mixin main-js
         }
       });
       $('.slider').on('mouseenter', unsetPause)
+      
+      const slides = document.querySelectorAll('.slide');
+
+
+      observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.intersectionRatio > 0) {
+            console.log('in the view', entry);
+            $(entry.target).addClass('on');
+          } else {
+            console.log('out of view');
+            $(entry.target).removeClass('on');
+          }
+        });
+      });
+
+      slides.forEach(image => {
+        observer.observe(image);
+      });
+      
       
       $('.service .arrow-prev').on('click', function(){
         $(this).siblings('.gallery')[0].scrollBy({ left: -460, behavior: 'smooth' });

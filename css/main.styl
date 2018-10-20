@@ -71,14 +71,9 @@ footer
       display: none
 
 //- start: Hero Unit
-.slide
-  // float: left
 
 .slide
-  background-position: center
-  background-repeat: no-repeat
-  background-size: cover
-  box-sizing: border-box
+  // box-sizing: border-box
   span.slide-caption
     position: absolute
     display: block
@@ -113,21 +108,46 @@ h1
   scroll-snap-points-x: repeat(100%);
   scroll-snap-destination: 0% 100%;
 
-.slide
-  scroll-snap-align: center
-  display: block
-  width: 100%
-  flex-shrink: 0
-  float: left
-
 .slider
 .slide
   position: relative
   height: 560px
   max-height: 70vw
 
-.slide14
-  background-image: url(/images/hero/hornbill-lg.jpg)
+.slide
+  scroll-snap-align: center
+  display: block
+  width: 100%
+  flex-shrink: 0
+  float: left
+  // overflow: hidden
+  backface-visibility: hidden
+
+
+.slide .slide-background
+  position: absolute
+  width: 100%
+  height: 100%
+  background-position: center
+  background-repeat: no-repeat
+  background-size: cover
+
+.slider.loaded .slide-background
+  transform: translate3d(0,0,0) scale(1)
+
+.on.slide:nth-child(odd) .slide-background
+  transform: translate3d(-60px,10px,0) scale(1.1) rotate(-0.3deg);
+  transition: 6s transform
+  // transition-delay: 1s
+
+.on.slide:nth-child(even) .slide-background
+  transform: translate3d(40px,10px,0) scale(1.1) rotate(0.3deg);
+  transition: 6s transform
+  // transition-delay: 1s
+
+.slide1
+  background-image: url(/images/hero/cockatoo/lg/_Q5A6631.jpg)
+  // background: blue
 
 .slide2
   background-image: url(/images/hero/parrents-preening-lg.jpg)
