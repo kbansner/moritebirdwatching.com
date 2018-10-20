@@ -38,7 +38,7 @@ mixin slider
   - var n = 1
   .slider
     while n < 13
-      .slide
+      .slide(class = n > 1 ? 'lazyload' : '')
         .slide-background(class='slide'+n)
         span.slide-caption= n++
 
@@ -56,11 +56,13 @@ mixin main-js
   script(type='text/javascript').
     $(document).ready(function() {
       var timer, pause = false, delay = 7000;
+      var slider = $('.slider')[0];
       var slideNext = function() {
-        var slider = $('.slider')[0];
         slider.scrollBy({ left: slider.clientWidth, behavior: 'smooth' });
       }
       var scroller = function(){
+        var outsideViewPort = $(slider).children('.on').length === 0;
+        if (outsideViewPort) setPause()
         if (!pause) {
           slideNext();
         }
@@ -76,15 +78,13 @@ mixin main-js
       }
 
       $('.slider')[0].addEventListener('wheel', (e) => {
-        if (e.deltaX > 10 || e.deltaX < 10) {
-          setPause()
-        }
+        if (Math.abs(e.deltaX) > 10) { setPause() }
       });
       $('.slider').on('mouseenter', unsetPause)
-      
+
+
+
       const slides = document.querySelectorAll('.slide');
-
-
       observer = new IntersectionObserver(entries => {
         var x = 60;
         var s = 1.2;
@@ -95,6 +95,9 @@ mixin main-js
             s = Math.random() / 6 + 1.1;
             x = parseInt(Math.random() * 30 + 30) + 'px';
             setCssProperties(entry.target, x, s);
+            
+            // preload backgrounds one ahead
+            $(entry.target).next().removeClass('lazyload');
           } else {
             console.log('out of view');
             $(entry.target).removeClass('on');
@@ -106,12 +109,14 @@ mixin main-js
         observer.observe(image);
       });
       
+      // Set CSS properties
       function setCssProperties(ele, x, s) {
         console.log('props', x, s)
         ele.style.setProperty('--x-factor', x);
         ele.style.setProperty('--scale-factor', s);
       }
       
+      // Tours section gallery arrows
       $('.service .arrow-prev').on('click', function(){
         $(this).siblings('.gallery')[0].scrollBy({ left: -460, behavior: 'smooth' });
       });
@@ -120,6 +125,7 @@ mixin main-js
       });
     });
 
+    //initial fade in
     $(document).ready(function() { 
       $('#main').addClass('is-js');
       setTimeout(function(){
