@@ -35,12 +35,13 @@ mixin navigation-home
     +link('index.html#birds', 'Birds')
 
 mixin slider
-  - var n = 1
+  - var n = 0
   .slider
-    while n < 13
+    while n < 12
+      - n++
       .slide(class = n > 1 ? 'lazyload' : '')
         .slide-background(class='slide'+n)
-        span.slide-caption= n++
+        -//span.slide-caption= n
 
 mixin footer
   footer
