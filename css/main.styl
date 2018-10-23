@@ -11,13 +11,21 @@ $mediaBp1Width = 960px
 $mediaMinWidth = 480px
 
 $hero-border = 0.35rem
-$boxed-border = 8px
+$gutter-spacing = 10px
+$inner-width = 70%
+$inner-width-phone = 100%
+
+$base-size = 22px
+$base-size-phone = 20px
+
+@import 'grids'
+@import 'slides'
 
 html
-  font-size: 22px
+  font-size: $base-size
   font-family: 'EB Garamond', Times, serif
   @media(max-width: $breakpoint-phone)
-    font-size: 16px
+    font-size: $base-size-phone
 
 #main > .pg
   position: relative
@@ -52,254 +60,29 @@ header
     a.on:hover
       text-decoration: none
 
-footer
-  nav
-    clearfix()
-    display: block
-    padding: 3rem
-    font-size: 0.8rem
-    background-color: black
-    a
-      display: block
-      margin-left: 2rem
-      float: left
-      color: white
-      white-space: nowrap
-      font-family: Tahoma, sans-serif
-      text-decoration: none
-    a.on
-      display: none
-
-//- start: Hero Unit
-
-.slide
-  // box-sizing: border-box
-  span.slide-caption
-    position: absolute
-    display: block
-    width: 100%
-    text-align: center
-    top: 49%
-    color: white
-    text-shadow: 1px 1px 5px black
-
-
 #headline
-  margin: 2rem auto 0
+  margin: 2rem auto -.5rem
   max-width: 1024px
   h1
     padding: 0
-    width: 70%
+    width: $inner-width
     font-size: 2rem
     font-weight: bold
-    font-family: 'Ovo', serif
+    //font-family: 'Ovo', serif
 
 h1
-  margin: 0 auto
+  margin: 1rem auto
+  // padding-top: 1.5rem
+  font-size: 1.5rem
 
-// Large Hero
-// @media(min-width: $mediaBp1Width)
-
-.slider
-  display: flex
-  scroll-snap-type: x mandatory
-  overflow: hidden
-  overflow-x: scroll
-  scroll-snap-points-x: repeat(100%);
-  scroll-snap-destination: 0% 100%;
-
-.slider
-.slide
-  position: relative
-  height: 560px
-  max-height: 70vw
-
-.slide
-  scroll-snap-align: center
-  display: block
-  width: 100%
-  flex-shrink: 0
-
-:root
-  --scale-factor: 1.16;
-  --rotate: 1deg;
-  --x-factor: 0px;
-  --transform-duration: 6s;
-
-.slide
-  .slide-cropper
-    position: relative
-    width: 100%
-    height: 100%
-    overflow: hidden
-
-  .slide-background
-    position: absolute
-    width: 100%
-    height: 100%
-    background-position: center
-    background-repeat: no-repeat
-    background-size: cover
-
-.slider.loaded .slide-background
-  transform: translate3d(0,0,0) scale(1)
-
-.on.slide .slide-background
-    transition: var(--transform-duration) transform
-    transition-delay: 1s
-
-.on.slide:nth-child(odd) .slide-background
-  transform: translateX(calc(var(--x-factor) * -1)) scale(var(--scale-factor)) rotate(calc(var(--rotate) * -1))
-
-.on.slide:nth-child(even) .slide-background
-  transform: translateX(var(--x-factor)) scale(var(--scale-factor)) rotate(var(--rotate))
-
-.is-js .lazyload .slide-background
-  background-image: none
-
-.slide1
-  background-image: url(/images/hero/cockatoo/lg/Q5A6631.jpg)
-
-.slide2
-  background-image: url(/images/hero/cockatoo/lg/parrents-preening.jpg)
-
-.slide3
-  background-image: url(/images/hero/cockatoo/lg/Q5A2270.jpg)
-
-.slide4
-  background-image: url(/images/hero/cockatoo/lg/Q5A2697.jpg)
-
-.slide5
-  background-image: url(/images/hero/cockatoo/lg/Q5A2371.jpg)
-
-.slide6
-  background-image: url(/images/hero/cockatoo/lg/Q5A2377.jpg)
-
-.slide7
-  background-image: url(/images/hero/eclectus/lg/Q5A3607.jpg)
-
-.slide8
-  background-image: url(/images/hero/eclectus/lg/Q5A3708.jpg)
-
-.slide9
-  background-image: url(/images/hero/eclectus/lg/Q5A3979.jpg)
-
-.slide10
-  background-image: url(/images/hero/eclectus/lg/Q5A4003.jpg)
-
-.slide11
-  background-image: url(/images/hero/eclectus/lg/Q5A4012.jpg)
-
-.slide12
-  background-image: url(/images/hero/cockatoo/lg/Q5A6572.jpg)
-
-
-// hero fade in
-.is-js .slider::after
-    position: absolute
-    content: ''
-    top: 0
-    left: 0
-    bottom: 0
-    right: 0
-    background-color: #eee
-    z-index: 1
-    transition: opacity 1s linear
-.is-js .slider.loaded::after
-    opacity: 0
-
-// Vertical Tablet Hero
-@media(min-width: $breakpoint-phone) and (max-width: $mediaBp1Width)
-  .slider
-  .slide
-    // width: auto
-    height: 500px
-    max-height: 65.1vw
-
-  .slide1
-    background-image: url(/images/hero/cockatoo/md/Q5A6631.jpg)
-
-  .slide2
-    background-image: url(/images/hero/cockatoo/md/parrents-preening.jpg)
-
-  .slide3
-    background-image: url(/images/hero/cockatoo/md/Q5A2270.jpg)
-
-  .slide4
-    background-image: url(/images/hero/cockatoo/md/Q5A2697.jpg)
-
-  .slide5
-    background-image: url(/images/hero/cockatoo/md/Q5A2371.jpg)
-
-  .slide6
-    background-image: url(/images/hero/cockatoo/md/Q5A2377.jpg)
-
-  .slide7
-    background-image: url(/images/hero/eclectus/md/Q5A3607.jpg)
-
-  .slide8
-    background-image: url(/images/hero/eclectus/md/Q5A3708.jpg)
-
-  .slide9
-    background-image: url(/images/hero/eclectus/md/Q5A3979.jpg)
-
-  .slide10
-    background-image: url(/images/hero/eclectus/md/Q5A4003.jpg)
-
-  .slide11
-    background-image: url(/images/hero/eclectus/md/Q5A4012.jpg)
-
-  .slide12
-    background-image: url(/images/hero/cockatoo/md/Q5A6572.jpg)
-
-// Phone Hero
 @media(max-width: $breakpoint-phone)
+  #headline
+    margin: .8rem 1.5rem 0
+    h1
+      font-size: 1.7rem
+      width: $inner-width-phone
   h1
-    padding-top: 1.7rem
-    font-size: 1.6rem
-
-  .slider
-  .slide
-    height: 50vw
-    max-height: none
-
-  .slide1
-    background-image: url('/images/hero/cockatoo/sm/Q5A6631.jpg')
-
-  .slide2
-    background-image: url(/images/hero/cockatoo/sm/parrents-preening.jpg)
-
-  .slide3
-    background-image: url(/images/hero/cockatoo/sm/Q5A2270.jpg)
-
-  .slide4
-    background-image: url('/images/hero/cockatoo/sm/Q5A2697.jpg')
-
-  .slide5
-    background-image: url('/images/hero/cockatoo/sm/Q5A2371.jpg')
-
-  .slide6
-    background-image: url(/images/hero/cockatoo/sm/Q5A2377.jpg)
-
-  .slide7
-    background-image: url(/images/hero/eclectus/sm/Q5A3607.jpg)
-
-  .slide8
-    background-image: url(/images/hero/eclectus/sm/Q5A3708.jpg)
-
-  .slide9
-    background-image: url(/images/hero/eclectus/sm/Q5A3979.jpg)
-
-  .slide10
-    background-image: url(/images/hero/eclectus/sm/Q5A4003.jpg)
-
-  .slide11
-    background-image: url(/images/hero/eclectus/sm/Q5A4012.jpg)
-
-  .slide12
-    background-image: url(/images/hero/cockatoo/sm/Q5A6572.jpg)
-
-//- end: Hero Unit
+    margin: 0.5rem 0
 
 article
   clearfix()
@@ -316,15 +99,21 @@ article
     max-width: 100%
 
   p
+    margin: 1em 0
     line-height: 1.2
-  p+p
-    margin-top: 1.5rem
+  p + p
+    margin-top: 1.5em
 
   .inner
     margin: 0 auto
     padding-top: 1rem
-    padding-bottom: 3rem
-    width: 70%
+    padding-bottom: 2rem
+    width: $inner-width
+    @media(max-width: $breakpoint-phone)
+      padding-left: 1.5rem
+      padding-right: 1.5rem
+      padding-bottom: 1.5rem
+      width: auto
 
     & + .inner
     & + .boxed
@@ -334,19 +123,12 @@ article
 
   .boxed
     clearfix()
-    padding-top: 1rem
-    padding-left: 3rem
-    padding-right: 3rem
-    padding-bottom: 1rem
-    img
-      border: 3px solid #111
-      @media(max-width: $breakpoint-phone)
-        border-width: 5px
+    padding: 1rem
 
     & + .inner
       padding-top: 0
     figure
-      margin: $boxed-border 2px
+      margin: $gutter-spacing 0
 
   .padded
     padding-top: 1rem
@@ -354,53 +136,9 @@ article
     padding-right: 3rem
     padding-bottom: 1rem
 
-.half-col
-  float: left
-  width: 50%
-  box-sizing: border-box
-
-.third-col
-  float: left
-  width: 33.33%
-  box-sizing: border-box
   @media(max-width: $breakpoint-phone)
-    max-width: 300px
-
-.quarter-col
-  float: left
-  width: 25%
-  box-sizing: border-box
-  @media(max-width: $breakpoint-phone)
-    max-width: 300px
-
-picture.half-col
-picture.third-col
-picture.quarter-col
-  padding-left: (3 * $boxed-border)
-  padding-right: (3 * $boxed-border)
-  padding-bottom: (3 * $boxed-border)
-  img
-    margin: 0 auto
-
-@media(max-width: $breakpoint-phone)
-  .half-col
-  .third-col
-    float: none
-    margin-top: (3 * $boxed-border)
-    margin-left: auto
-    margin-right: auto
-    width: auto
-  .half-col:first-child
-  .third-col:first-child
-    margin-top: 0
-
-  .quarter-col
-    margin-top: (3 * $boxed-border)
-    width: 50%
-
-  picture.half-col
-  picture.third-col
-    width: 75%
+    p
+      margin: 0.5em 0
 
 picture
   display: block
@@ -409,6 +147,7 @@ figure
   margin: .25rem 0
   font-size: 0.9rem
   line-height: 1.4
+  font-family: sans-serif
   color: #333
 
 .reverse figure
@@ -441,8 +180,9 @@ figure
 
 .parallax
   position: relative
-  margin: 1rem auto 0
   max-width: 1024px
+  @media(min-width: $breakpoint-parallax)
+    margin: 1rem auto 0
   picture
     object-fit: cover
     source
@@ -457,144 +197,7 @@ figure
 //- end: parallax section
 
 //- start: Pages custom css
-
-
-//- end: Pages custom css
-
-//- start: Footer
-footer
-  a
-    display: block
-    margin: 2rem 0 4rem
-    text-align: center
-    font-family: Tahoma, sans-serif
-    font-size: 0.8rem
-    color: #666
-    text-transform: lowercase
-    text-decoration: none
-
-
-.top
-  position: relative
-  display: block
-  margin: 4rem auto
-  width: 6rem
-  height: 1rem
-  text-align: center
-
-.top::before
-  position absolute
-  left: 0
-  bottom: 0
-  width: 6rem
-  height: 5rem
-  content: ''
-
-.top::after
-  position absolute
-  left: 50%
-  margin-left: -15px
-  bottom: 1.5rem
-  width: 30px
-  height: 28px
-  background: url(/images/arrows.svg) 50% 26px repeat
-  background-size: 100%
-  transform: rotate(180deg)
-  opacity: 0.8
-  content: ''
-
-.top:hover::after
-  animation: animatedBackground 2s linear infinite;
-
-@keyframes animatedBackground
-  from
-    background-position-y: 100%
-  to
-    background-position-y: 01px
-
-//- end: Footer
-
-// #birds
-#services
-  padding-top: 3rem
-.reverse
-  background-color: black !important
-// #birds article
-.reverse article
-  background-color: black !important
-  color: white !important
-
-.service
-  position: relative
-  overflow: hidden
-  margin-top: 1rem
-  .service-description
-    float: left;
-    display: block
-    margin-bottom: 1rem
-    padding-right: 1rem
-    font-size: .8rem
-    line-height: 1rem
-    width: 30%
-
-  .service-picture
-    position: relative
-    width: calc(70% - 1rem)
-    float: right;
-    // display: block
-    margin-bottom: 3rem
-    margin-left: 0
-    // background-image: linear-gradient(to right, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 99%);
-
-    // figure
-    //   position: absolute
-    //   bottom: .5em
-    // max-width: 450px
-  @media(max-width: $breakpoint-tablet)
-    .service-description
-    .service-picture
-      float: none
-      width: auto
-
-.arrow-prev
-  position: absolute
-  left: 0
-  top: 0
-  bottom: 0
-  width: 40px
-  // background-color: orange
-  z-index: 10
-  cursor: pointer
-  background-image: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 40%)
-  // outline: 1px dotted white
-
-
-.arrow-next
-  position: absolute
-  right: 0
-  top: 0
-  bottom: 0
-  width: 40px
-  // background-color: orange
-  z-index: 10
-  cursor: pointer
-  background-image: linear-gradient(to left, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 40%)
-  // outline: 1px dotted white
-
-
-.gallery
-  display: flex
-  scroll-snap-type: x mandatory
-  overflow-x: scroll
-
-  picture
-    scroll-snap-align: center
-    max-width: 450px
-    & + picture
-      margin-left: 20px
-    img
-      max-width: none
-
+@import 'tours'
 .portrait
   img
     border-radius: 25%
@@ -602,31 +205,24 @@ footer
     border-style: solid
   figure
     text-align: center
-
-.contact-form
-  margin-bottom: 3rem
-  div
-    padding: 1rem 1rem 0 0
-
-  label span
+@import 'contact'
+//- end: Pages custom css
+//- start: Footer
+footer
+  nav
+    clearfix()
     display: block
-    padding: 5px 0
-
-  input[type=text]
-  input[type=email]
-    width: 100%
-    box-sizing: border-box
-
-  textarea
-    width: 100%
-    height: 6rem
-    box-sizing: border-box
-
-button.btn
-  padding: 0 .6rem
-  background-color: blue
-  line-height: 2rem
-  border-radius: .5rem
-  color: white
-  border: none
-  cursor: pointer
+    padding: 3rem
+    font-size: 0.8rem
+    background-color: black
+    a
+      display: block
+      margin-left: 2rem
+      float: left
+      color: white
+      white-space: nowrap
+      font-family: Tahoma, sans-serif
+      text-decoration: none
+    a.on
+      display: none
+//- end: Footer

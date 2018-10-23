@@ -1,0 +1,48 @@
+
+.half-col
+  float: left
+  width: 50%
+  box-sizing: border-box
+
+.third-col
+  float: left
+  width: 33.33%
+  box-sizing: border-box
+  @media(max-width: $breakpoint-phone)
+    max-width: 300px
+
+.quarter-col
+  float: left
+  width: 25%
+  box-sizing: border-box
+  @media(max-width: $breakpoint-phone)
+    max-width: 300px
+
+picture.half-col
+picture.third-col
+picture.quarter-col
+  padding-left: ($gutter-spacing)
+  padding-right: ($gutter-spacing)
+  padding-bottom: ($gutter-spacing)
+  img
+    margin: 0 auto
+
+@media(max-width: $breakpoint-phone)
+  .half-col
+  .third-col
+    float: none
+    margin-top: ($gutter-spacing)
+    margin-left: auto
+    margin-right: auto
+    width: auto
+  .half-col:first-child
+  .third-col:first-child
+    margin-top: 0
+
+  .quarter-col
+    margin-top: ($gutter-spacing)
+    width: 50%
+
+  picture.half-col
+  picture.third-col
+    width: 100%
