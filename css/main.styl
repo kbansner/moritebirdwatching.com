@@ -2,6 +2,7 @@
 @import 'vars'
 @import 'grids'
 @import 'slides'
+@import 'carousel'
 
 big-screen-margin(big = $inner-width)
   margin: 0 auto
@@ -17,8 +18,16 @@ screen-margin(big = $inner-width, small = $inner-margin-phone)
   @media(max-width: $breakpoint-tablet)
     small-screen-margin(small)
 
-*
-  box-sizing: border-box
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
 
 html
   font-size: $base-size
