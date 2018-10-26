@@ -230,11 +230,12 @@ mixin tour-trekking
       This is a very strenious hike which requires a number of porters to carry your food as well as things to barter on your way through the Manusella National Park. For the first four days you’ll be staying in villages enjoying the warm hospitality of their chiefs. The last two or three nights on the way down from the village of Manusella to the southern coast, you’ll sleep in caves cut into the rock face.
 
 
-mixin team-portrait(url, alt)
-  picture.quarter-col.portrait
-    img(class='lazyload', src='images/team/'+url, width='80', height='100', alt=alt)
-    if alt
-      figure
-        =alt
-    else 
-      figure &nbsp;
+mixin team-member(name, title, active)
+  li
+    figure(class = active ? 'active' : '')
+      div
+        div
+      figcaption
+        h2= name
+        if title
+          p= title

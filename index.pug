@@ -98,41 +98,12 @@ html
             .slider--teams
               .slider--teams__team
                 ul#list
-                  li
-                    figure.active
-                      div
-                        div
-                      figcaption
-                        h2 Soni
-                        p Head of Team
-                  li
-                    figure
-                      div
-                        div
-                      figcaption
-                  li
-                    figure
-                      div
-                        div
-                      figcaption
-                  li
-                    figure
-                      div
-                        div
-                      figcaption
-                        h2 P.D.
-                        p Guide - Cook - Porter
-                  li
-                    figure
-                      div
-                        div
-                      figcaption
-                  li
-                    figure
-                      div
-                        div
-                      figcaption
-
+                  +team-member('Soni', 'Head of Team', true)
+                  +team-member
+                  +team-member
+                  +team-member('P.D.', 'Guide - Cook - Porter')
+                  +team-member
+                  +team-member
 
 
       .pg#contact
