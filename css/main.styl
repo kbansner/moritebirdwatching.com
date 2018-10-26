@@ -70,27 +70,19 @@ header
     @media(max-width: $breakpoint-phone)
       display: none
 
-#headline
-  margin: 2rem auto -.5rem
-  max-width: 1024px
-  h1
-    padding: 0
-    width: $inner-width
-    font-size: 2rem
-    font-weight: bold
-    //font-family: 'Ovo', serif
+
+h1#headline
+  margin: 0 0 1rem
+  padding: 0
+  font-size: 2rem
 
 h1
-  margin: 1rem auto
-  // padding-top: 1.5rem
+  margin: 1rem 0
   font-size: 1.5rem
 
 @media(max-width: $breakpoint-phone)
-  #headline
-    margin: .8rem $inner-margin-phone 0
-    h1
-      font-size: 1.7rem
-      width: $inner-width-phone
+  h1#headline
+    font-size: 1.3rem
   h1
     margin: 0.5rem 0
 
@@ -114,8 +106,8 @@ article
   p
     margin: 1em 0
     line-height: 1.2
-  p + p
-    margin-top: 1.5em
+  // p + p
+  //   margin-top: 1.5em
 
   .outer
     screen-margin(95%)
