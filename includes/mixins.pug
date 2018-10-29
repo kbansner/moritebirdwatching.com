@@ -65,6 +65,19 @@ mixin main-js
         var lastXPos = 0;
         var slideNext = function() {
           slider.scrollBy({ left: slider.clientWidth, behavior: 'smooth' });
+          /* console.log('slider.clientWidth', slider.clientWidth) */
+          /* $(slider).velocity({
+            scrollLeft: slider.clientWidth
+          }, {duration: 1000 }); */
+
+          /* $(slider).velocity({
+            scrollLeft: 500
+          }, {
+            duration: 1000,
+            easing: [400, 26],
+            queue: false
+          }); */
+
         }
         var scroller = function(){
           var outsideViewPort = $(slider).children('.on').length === 0;
@@ -124,11 +137,13 @@ mixin main-js
       })();
 
       // Tours section gallery arrows
-      $('.tour .arrow-prev').on('click', function(){
-        $(this).siblings('.gallery')[0].scrollBy({ left: -460, behavior: 'smooth' });
+      $('.tour .arrow-prev').on('click', function(e){
+        var x = $(e.target).nextAll('.gallery').children('picture')[0].clientWidth + 20;
+        $(this).siblings('.gallery')[0].scrollBy({ left: -1 * x, behavior: 'smooth' });
       });
-      $('.tour .arrow-next').on('click', function(){
-        $(this).siblings('.gallery')[0].scrollBy({ left: 460, behavior: 'smooth' });
+      $('.tour .arrow-next').on('click', function(e){
+        var x = $(e.target).nextAll('.gallery').children('picture')[0].clientWidth + 20;
+        $(this).siblings('.gallery')[0].scrollBy({ left: x, behavior: 'smooth' });
       });
     });
 
@@ -199,17 +214,17 @@ mixin tour-nature-walks
       We will take you for a walk between villages where we will point out local flora, fauna and the villagers’ age-old farming techniques. Bring your binoculars as we are very likely to see birds along the way. Trips can be tailored to your specific interests and energy level.
 
 mixin tour-kambali-bebas
-  +tour('Visit to the Bird Rehabilitation Center (Kambali Bebas)', '', '1 hour', ['kambali-bekas/_Q5A3005.jpg','kambali-bekas/_Q5A3009.jpg','kambali-bekas/_Q5A3015.jpg','kambali-bekas/_Q5A3024.jpg','kambali-bekas/_Q5A3094.jpg','kambali-bekas/_Q5A3100.jpg','kambali-bekas/IMG_1160.jpg'])
+  +tour('Visit to the Bird Rehabilitation Center (Kambali Bebas)', '', '1 hour', ['kambali-bekas/IMG_1160.jpg','kambali-bekas/_Q5A3005.jpg','kambali-bekas/_Q5A3009.jpg','kambali-bekas/_Q5A3015.jpg','kambali-bekas/_Q5A3024.jpg','kambali-bekas/_Q5A3094.jpg','kambali-bekas/_Q5A3100.jpg'])
     p.
       The Rehabilitation Center is a must-see for all bird lovers visiting the area. It houses parrots caught in the wild and recovered from the illegal pet trade. Birds which are deemed healthy enough and capable of surviving in the wild are relesed back into the jungle areas they came from.
 
 mixin tour-viewing-platforms
-  +tour('Vist to Viewing Platforms', 'up to 20 people' , '1 - 3 hours', ['viewing-platforms/viewing-platform.jpg','viewing-platforms/20171028_165122.jpg','viewing-platforms/20171028_165240.jpg'])
+  +tour('Vist to Viewing Platforms', 'up to 20 people' , '1 - 3 hours', ['viewing-platforms/20171028_165240.jpg','viewing-platforms/20171028_165122.jpg','viewing-platforms/viewing-platform.jpg'])
     p.
      Above the village of Masihulan are two viewing platforms sourounded by parrots’ nests. It’s a steep 15 minute hike up from the main road, but once you’re there the view is spectacular.
 
 mixin tour-canopy-platform-trips
-  +tour('Canopy Platform Trips', 'up to 10 people', 'Several hours to overnight', ['canopy-platform-trips/2838228186_c98768c564_o.jpg','canopy-platform-trips/IMG_2918.jpg','canopy-platform-trips/IMG_5740.jpg','canopy-platform-trips/IMG_3167.jpg','canopy-platform-trips/2821196152_7e3c4c92b5_o.jpg','canopy-platform-trips/2837183795_20097d5b7e_o.jpg','canopy-platform-trips/2838055094_4f66aee101_o.jpg','canopy-platform-trips/R0016811.jpg','canopy-platform-trips/_Q5A7023.jpg'])
+  +tour('Canopy Platform Trips', 'up to 10 people', 'Several hours to overnight', ['canopy-platform-trips/IMG_2918.jpg','canopy-platform-trips/2838228186_c98768c564_o.jpg','canopy-platform-trips/IMG_5740.jpg','canopy-platform-trips/IMG_3167.jpg','canopy-platform-trips/2821196152_7e3c4c92b5_o.jpg','canopy-platform-trips/2837183795_20097d5b7e_o.jpg','canopy-platform-trips/2838055094_4f66aee101_o.jpg','canopy-platform-trips/R0016811.jpg','canopy-platform-trips/_Q5A7023.jpg'])
     p.
       Sleep in a tree. Wake up before dawn to watch the neighboring parrots begin their day by stretching and preening.
 
@@ -220,9 +235,9 @@ mixin tour-api-lima
       This shallow cave offerst a high lookout over the forest canopy. It’s a two to three hour hike from the quary where the road ends. This high cave is a great place to relax and view Cockatoos, Lories, and Hornbills without having to climb up to the tree platforms.
 
 mixin tour-custom-tree-platforms
-  +tour('Custom Tree Platforms', 'Small', '3 - 5 days', ['custom-platforms/IMG_1428.jpg','custom-platforms/IMG_1437.jpg','custom-platforms/20171028_165240.jpg','custom-platforms/_Q5A4034.jpg','custom-platforms/IMG_1448.jpg','custom-platforms/custom-platform.jpg'])
+  +tour('Custom Tree Platforms', 'Small', '3 - 5 days', ['custom-platforms/custom-platform.jpg','custom-platforms/IMG_1428.jpg','custom-platforms/IMG_1437.jpg','custom-platforms/20171028_165240.jpg','custom-platforms/_Q5A4034.jpg','custom-platforms/IMG_1448.jpg'])
     p.
-      Make a cozy platform near your favorit birds.
+      If there’s a specific bird you would like to see, our guides can try to locate them and build a conceiled platform for you near their sleeping trees or feeding spots.
 
 mixin tour-trekking
   +tour('Trekking Across Seram', 'up to 6 people', '7 days', ['trekking/R0016157.jpg','trekking/R0016168.jpg','trekking/R0016172.jpg','trekking/R0016403.jpg','trekking/R0016185.jpg','trekking/R0016283.jpg','trekking/R0016341.jpg','trekking/R0016342.jpg','trekking/R0016373.jpg','trekking/R0016386.jpg','trekking/IMG_3063.jpg','trekking/R0016399.jpg','trekking/R0016432.jpg','trekking/R0016433.jpg','trekking/R0016595.jpg','trekking/R0016624.jpg','trekking/R0016734.jpg','trekking/R0016736.jpg'])

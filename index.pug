@@ -77,7 +77,7 @@ html
         article
           .outer
             h1 Tours
-            p tours are nogatabile
+            -//p tours are nogatabile
           .outer
             +tour-nature-walks
             +tour-kambali-bebas
@@ -106,32 +106,35 @@ html
                   +team-member
 
 
+          .inner
+            p The nearest airport is Ambon (AMQ), about nine hours away by car and fast boat. Email us for details on getting here.
+            <iframe src="https://www.google.com/maps/d/embed?mid=19dfgRReYgaY6rdYk3s6bJi2XmHB_a6AV" width="" height="480" style="border:0; width: 100%; margin: 1rem auto;"></iframe>
+            -// <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d509988.49458573177!2d128.92702245204495!3d-3.018488856446105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d6bd6d35b7b4ca3%3A0xed02e6b3442be633!2sSD+Negeri+Masihulan!5e0!3m2!1sen!2sus!4v1538806118644&z=5" width="" height="380" frameborder="0" style="border:0; width: 100%; margin: 1rem auto;" allowfullscreen></iframe>
+
       .pg#contact
         article
           .inner
-            .half-col.reverse-col
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d509988.49458573177!2d128.92702245204495!3d-3.018488856446105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d6bd6d35b7b4ca3%3A0xed02e6b3442be633!2sSD+Negeri+Masihulan!5e0!3m2!1sen!2sus!4v1538806118644" width="" height="320" frameborder="0" style="border:0; width: 95%; margin: 1rem auto;" allowfullscreen></iframe>
-            .half-col
-              h1 Contact Us
-              form.contact-form(action="https://formspree.io/kai@becak.bike", method="POST")
-                div
-                  label 
+            h1 Contact Us
+            p Communicating directly with us can be slow due to lack of internet in Masihulan and spotty cell service. Please use the form below for any general questions and be patient with us.
+
+            form.contact-form(action="https://formspree.io/info@moritebirdwatching.com", method="POST")
+              div
+                label 
                   span Name
-                    input(type="text" name="name")
-                div
-                  label 
-                    span Email Address
-                    input(type="email" name="_replyto")
-                div
-                  label 
-                    span Message
-                    textarea(name='message')
-                div
-                  button.btn(type="submit") Send
+                  input(type="text" name="name")
+              div
+                label 
+                  span Email Address
+                  input(type="email" name="_replyto")
+              div
+                label 
+                  span Message
+                  textarea(name='message')
+              div
+                button.btn(type="submit") Send
 
-                input(type="hidden" name="_subject" value="Morite Birdwatching Inquirery")
-                input(type="hidden" name="_next" value="http://moreitebirdwatching/confirm.html")
-
+              input(type="hidden" name="_subject" value="Morite Birdwatching Inquirery")
+              input(type="hidden" name="_next" value="http://moreitebirdwatching/confirm.html")
 
       +footer
     +main-js
