@@ -21,14 +21,14 @@ mixin link(href, name)
   a(href=href)&attributes(attributes)= name
 
 mixin navigation
-  nav
+  nav.nav-top
     +link('#contact', 'Contact Us')
     +link('#team', 'Team')
     +link('#tours', 'Tours')
     +link('#birds', 'Birds')
 
 mixin navigation-home
-  nav
+  nav.nav-top
     +link('index.html#contact', 'Contact Us')
     +link('index.html#team', 'Team')
     +link('index.html#tours', 'Tours')
@@ -232,7 +232,7 @@ mixin tour-canopy-platform-trips
 mixin tour-api-lima
   +tour('Api Lima', 'up to 6 people', '2 days', ['api-lima/R0015611.jpg','api-lima/IMG_1340.jpg','api-lima/2837302547_3c94b02bfb_o.jpg','api-lima/IMG_2757.jpg','api-lima/IMG_2886.jpg','api-lima/R0015672.jpg','api-lima/R0015706.jpg','api-lima/R0015973.jpg'])
     p.
-      This shallow cave offerst a high lookout over the forest canopy. It’s a two to three hour hike from the quary where the road ends. This high cave is a great place to relax and view Cockatoos, Lories, and Hornbills without having to climb up to the tree platforms.
+      This shallow cave offers a high lookout over the forest canopy. It’s a two to three hour hike from the quary where the road ends. This high cave is a great place to relax and view Cockatoos, Lories, and Hornbills without having to climb up to the tree platforms.
 
 mixin tour-custom-tree-platforms
   +tour('Custom Tree Platforms', 'Small', '3 - 5 days', ['custom-platforms/custom-platform.jpg','custom-platforms/IMG_1428.jpg','custom-platforms/IMG_1437.jpg','custom-platforms/20171028_165240.jpg','custom-platforms/_Q5A4034.jpg','custom-platforms/IMG_1448.jpg'])

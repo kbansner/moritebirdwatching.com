@@ -38,37 +38,36 @@ html
 #main > .pg
   position: relative
 
-header
-  nav
-    clearfix()
-    big-screen-margin()
-    padding: 15px
-    font-size: 0.8rem
-    a
-      display: block
-      float: right
-      white-space: nowrap
-      font-family: Tahoma, sans-serif
-      margin-left: 2rem
-      color: #999
-      text-decoration: none
-    a:hover
-    a.on
-      color: black
-    a.logo
-      display: block
-      float: left
-      margin-left: 0
-      width: 7rem
-      font-family: Tahoma, sans-serif
-      font-weight: bold
-    a:hover
-      text-decoration: underline
-    a.on:hover
-      text-decoration: none
+nav.nav-top
+  clearfix()
+  big-screen-margin()
+  padding: 15px
+  font-size: 0.8rem
+  a
+    display: block
+    float: right
+    white-space: nowrap
+    font-family: Tahoma, sans-serif
+    margin-left: 2rem
+    color: #999
+    text-decoration: none
+  a:hover
+  a.on
+    color: black
+  a.logo
+    display: block
+    float: left
+    margin-left: 0
+    width: 7rem
+    font-family: Tahoma, sans-serif
+    font-weight: bold
+  a:hover
+    text-decoration: underline
+  a.on:hover
+    text-decoration: none
 
-    @media(max-width: $breakpoint-phone)
-      display: none
+  @media(max-width: $breakpoint-phone)
+    display: none
 
 
 h1#headline
