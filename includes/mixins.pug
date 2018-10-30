@@ -39,7 +39,7 @@ mixin slider
   .slider
     while n < 12
       - n++
-      .slide(class = n > 1 ? 'lazyload' : '')
+      .slide(class = n > 1 ? 'l' : '')
         .slide-cropper
           .slide-background(class='slide'+n)
           -//span.slide-caption= n
