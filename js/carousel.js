@@ -107,7 +107,7 @@ var sliderTeam = (function(document, $) {
         } else {
           $current = currentSlide;
         }
-        console.log($current);
+        // console.log($current);
         _moveIt($listItems.eq($current), $current);
       },
 
