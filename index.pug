@@ -119,9 +119,24 @@ html
 
             form.contact-form(action="https://formspree.io/info@moritebirdwatching.com", method="POST")
               div
-                label 
+                label
                   span Name
                   input(type="text" name="name")
+              div
+                label
+                  span Inquiring about
+                  select(id="contact-interest", name="interested-in")
+                    option(value="") Choose topic
+                    option(value="tour-nature-walks") Nature Walks
+                    option(value="tour-kambali-bebas") Kambali Bekas Visits
+                    option(value="tour-viewing-platforms") Viewing Platform Trips
+                    option(value="tour-canopy-platform-trips") Canopy Platform Trips
+                    option(value="tour-api-lima") Api Lima Trips
+                    option(value="tour-custom-tree-platforms") Custom Tree Platforms
+                    option(value="tour-trekking") Trekking
+                    option(value="directions") Directions to Morite Birdwatchign
+                    option(value="other") Other
+
               div
                 label 
                   span Email Address
