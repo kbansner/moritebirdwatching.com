@@ -40,7 +40,7 @@ html
 
 nav.nav-top
   clearfix()
-  big-screen-margin()
+  screen-margin()
   padding: 15px
   font-size: 0.8rem
   a
@@ -48,7 +48,7 @@ nav.nav-top
     float: right
     white-space: nowrap
     font-family: Tahoma, sans-serif
-    margin-left: 2rem
+    margin-left: 1.5rem
     color: #999
     text-decoration: none
   a:hover
@@ -69,15 +69,14 @@ nav.nav-top
   @media(max-width: $breakpoint-phone)
     display: none
 
-
 h1#headline
   margin: 0 0 1rem
   padding: 0
-  font-size: 2rem
+  font-size: 2.5rem
 
 h1
   margin: 1rem 0
-  font-size: 1.5rem
+  font-size: 2.5rem
 
 @media(max-width: $breakpoint-phone)
   h1#headline
@@ -88,14 +87,13 @@ h1
 article
   clearfix()
   display: block
-  margin: 0 auto
-  width: 1024px
-  max-width: 100%
+  // margin: 0 auto
+  // width: 1024px
+  // max-width: 100%
   background-color: white
   background-repeat: no-repeat
   @media(max-width: $breakpoint-phone)
     width: auto
-    // margin: 0 1.5rem
 
   img
     display: block
@@ -105,22 +103,18 @@ article
   p
     margin: 1em 0
     line-height: 1.2
-  // p + p
-  //   margin-top: 1.5em
+
+  ul
+    padding-left: 2rem
 
   .outer
     screen-margin(95%)
   .inner
     screen-margin()
-    // margin: 0 auto
     padding-top: 1rem
     padding-bottom: 2rem
-    width: $inner-width
     @media(max-width: $breakpoint-phone)
-      // padding-left: 0
-      // padding-right: 0
       padding-bottom: $inner-margin-phone
-      // width: auto
 
     & + .inner
     & + .boxed
@@ -128,20 +122,18 @@ article
     .boxed
       padding-bottom: 0
 
+    & > picture
+      margin-top: 2rem
+      margin-bottom: 2rem
+
   .boxed
     clearfix()
     padding: 1rem
 
     & + .inner
       padding-top: 0
-    figure
+    figcaption
       margin: $gutter-spacing 0
-
-  // .padded
-  //   padding-top: 1rem
-  //   padding-left: 3rem
-  //   padding-right: 3rem
-  //   padding-bottom: 1rem
 
   @media(max-width: $breakpoint-phone)
     p
@@ -150,12 +142,14 @@ article
 picture
   display: block
 
-figure
-  margin: .25rem 0
-  font-size: 0.9rem
-  line-height: 1.4
+figcaption
+  // margin: .25rem 0
+  display: block
+  font-size: 0.8rem
+  height: 2.8em
+  line-height: 1.4em
   font-family: sans-serif
-  color: #333
+  color: #666
 
 // .reverse figure
 //   color: #ccc
@@ -187,7 +181,7 @@ figure
 
 .parallax
   position: relative
-  max-width: 1024px
+  // max-width: 1024px
   @media(min-width: $breakpoint-parallax)
     margin: 1rem auto 0
   picture

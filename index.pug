@@ -16,7 +16,10 @@ html
       #intro.pg
         article
           .inner
-            h1#headline Welcome to Morite Bird Watching Tours, Seram Island!
+            h1#headline Visit Seram, Home of the Moluccan Cockatoo
+            div
+              a.btn.btn-bg(href='#contact') Book a Tour
+
             p
               |Part of 
               a(href='https://en.wikipedia.org/wiki/Wallacea', target='wikipedia', title='Wikipedia') Wallacea
@@ -39,30 +42,30 @@ html
             img(class='lazyload', src='images/birds/cockatoo.jpg' width='1024', height='560', alt='')
         article
           .inner
-            h1 Birds from the Region
+            h1 Birds to be seen
             p.
               These are some of the unique birds in the jungle here. All the photos were taken by our guides or our clients.
           .boxed
-            picture.half-col
+            figure.third-col
               img(class='lazyload', src='images/birds/cockatoo-crest.jpg', width='450', height='320', alt='Seram (Moluccan) Cockatoos')
-              figure Seram (Moluccan) Cockatoos
-            picture.half-col
+              figcaption Seram (Moluccan) Cockatoos
+            figure.third-col
               img(class='lazyload', src='images/birds/eclectus-male-female.jpg', width='450', height='320', alt='Eclectus Parrots')
-              figure Eclectus Parrots
+              figcaption Eclectus Parrots
 
-            picture.half-col
+            figure.third-col
               img(class='lazyload', src='images/birds/red-lories.jpg', width='450', alt='Red Lories')
-              figure Red Lories
-            picture.half-col
+              figcaption Red Lories
+            figure.third-col
               img(class='lazyload', src='images/birds/moluccan-king-parrot.jpg', width='450', height='320', alt='Moluccan King Parrot')
-              figure Moluccan King Parrots
+              figcaption Moluccan King Parrots
 
-            picture.half-col
+            figure.third-col
               img(class='lazyload', src='images/birds/hornbill.jpg', width='450', alt='Hornbill')
-              figure Hornbills
-            picture.half-col
+              figcaption Hornbills
+            figure.third-col
               img(class='lazyload', src='images/birds/moluccan-flying-fox.jpg', width='450', height='320', alt='Moluccan Flying Fox')
-              figure Moluccan Flying Foxes
+              figcaption Moluccan Flying Foxes
 
           .inner
             p
@@ -75,9 +78,9 @@ html
 
       .pg#tours
         article
-          .outer
+          .inner
             h1 Tours
-            -//p tours are nogatabile
+            p Allow our experienced guides take you to explore Seram. These guides will plan, cater for and carry everthing you need for a unique wildlife adventure.
           .outer
             +tour-nature-walks
             +tour-kambali-bebas
@@ -94,17 +97,16 @@ html
             p.
               Morite Bird Watching is a small, community-based tour operator located in Masihulan village. All members of the team are native to Seram. With this spirit of community and ecotourism, we’d like to share the rich biodiversity of Seram.
 
-          .inner#carousel
+          .outer#carousel
             .slider--teams
               .slider--teams__team
                 ul#list
-                  +team-member('Soni', 'Head of Team', true)
-                  +team-member
-                  +team-member
-                  +team-member('P.D.', 'Guide - Cook - Porter')
-                  +team-member
-                  +team-member
-
+                  +team-member('Soni Sapulette', 'Head of Team', true)
+                  +team-member('Deni Limehuwey')
+                  +team-member('Cem Limehuwey')
+                  +team-member('P.D.')
+                  +team-member('Zet Patalatu 1')
+                  +team-member('Barkis Patamanue')
 
           .inner
             p The nearest airport is Ambon (AMQ), about nine hours away by car and fast boat. Email us for details on getting here.
@@ -124,7 +126,7 @@ html
                   input(type="text" name="name")
               div
                 label
-                  span Inquiring about
+                  span Topic
                   select(id="contact-interest", name="interested-in")
                     option(value="") Choose topic
                     option(value="tour-nature-walks") Nature Walks
@@ -134,7 +136,7 @@ html
                     option(value="tour-api-lima") Api Lima Trips
                     option(value="tour-custom-tree-platforms") Custom Tree Platforms
                     option(value="tour-trekking") Trekking
-                    option(value="directions") Directions to Morite Birdwatchign
+                    option(value="directions") Directions to our location
                     option(value="other") Other
 
               div
