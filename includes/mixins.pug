@@ -41,7 +41,7 @@ mixin slider
   .slider
     while n < 12
       - n++
-      .slide(class = n > 1 ? 'l' : '')
+      .slide(class = n > 1 ? 'lazyload' : '')
         .slide-cropper
           .slide-background(class='slide'+n)
           -//span.slide-caption= n
@@ -58,9 +58,10 @@ mixin main-js
   script(src='/js/smoothscroll-min.js')
   script(src='http://cdnjs.cloudflare.com/ajax/libs/velocity/1.1.0/velocity.min.js')
   script(src='/js/carousel-min.js')
+  script(src='/js/viewportchecker-min.js')
 
   script(type='text/javascript')
-    include inline.js
+    include inline2.js
 
 mixin tour-picture(url, alt)
   picture
