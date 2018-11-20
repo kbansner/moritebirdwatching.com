@@ -31,4 +31,16 @@ $(document).ready(function() {
       }
     }
   });
+  $slider.viewportChecker({
+    scrollHorizontal: false,
+    classToAdd: 'auto-show',
+    classToAddForFullView: '',
+    repeat: true,
+    scrollBox: '#main',
+    callbackFunction: function($elem, action){
+      if (action==='remove') {
+        bindNext(currSlide);
+      }
+    }
+  });
 });

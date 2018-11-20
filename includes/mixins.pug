@@ -38,13 +38,12 @@ mixin navigation-home
 
 mixin slider
   - var n = 0
-  .slider
+  .slider.auto-show
     while n < 12
       - n++
       .slide(class = n > 1 ? 'lazyload' : '')
         .slide-cropper
           .slide-background(class='slide'+n)
-          -//span.slide-caption= n
 
 mixin footer
   footer
@@ -54,7 +53,6 @@ mixin footer
 
 mixin main-js
   script(src="http://code.jquery.com/jquery-2.2.4.min.js", integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=", crossorigin="anonymous")
-  //script(src='/js/intersection-observer-min.js')
   script(src='/js/smoothscroll-min.js')
   script(src='http://cdnjs.cloudflare.com/ajax/libs/velocity/1.1.0/velocity.min.js')
   script(src='/js/carousel-min.js')
@@ -111,7 +109,6 @@ mixin tour-canopy-platform-trips
   +tour('Canopy Platform Trips', 'up to 10 people', 'Several hours to overnight', ['canopy-platform-trips/IMG_2918.jpg','canopy-platform-trips/2838228186_c98768c564_o.jpg','canopy-platform-trips/IMG_5740.jpg','canopy-platform-trips/IMG_3167.jpg','canopy-platform-trips/2821196152_7e3c4c92b5_o.jpg','canopy-platform-trips/2837183795_20097d5b7e_o.jpg','canopy-platform-trips/2838055094_4f66aee101_o.jpg','canopy-platform-trips/R0016811.jpg','canopy-platform-trips/_Q5A7023.jpg'])
     p.
       Sleep in a tree. Wake up before dawn to watch the neighboring parrots begin their day by stretching and preening.
-
 
 mixin tour-api-lima
   +tour('Api Lima', 'up to 6 people', '2 days', ['api-lima/R0015611.jpg','api-lima/IMG_1340.jpg','api-lima/2837302547_3c94b02bfb_o.jpg','api-lima/IMG_2757.jpg','api-lima/IMG_2886.jpg','api-lima/R0015672.jpg','api-lima/R0015706.jpg','api-lima/R0015973.jpg'])
