@@ -55,7 +55,7 @@ mixin main-js
   script(src="http://code.jquery.com/jquery-2.2.4.min.js", integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=", crossorigin="anonymous")
   script(src='/js/smoothscroll-min.js')
   script(src='http://cdnjs.cloudflare.com/ajax/libs/velocity/1.1.0/velocity.min.js')
-  script(src='/js/carousel-min.js')
+  -//script(src='/js/carousel-min.js')
   script(src='/js/viewportchecker-min.js')
 
   script(type='text/javascript')
@@ -127,7 +127,7 @@ mixin tour-trekking
 
 
 mixin team-member(name, title, active)
-  li
+  li.team-slide
     figure(class = active ? 'active' : '')
       div
         div

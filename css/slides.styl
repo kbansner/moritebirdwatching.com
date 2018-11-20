@@ -216,3 +216,76 @@
   .slide12
     background-image: url(/images/hero/cockatoo/sm/Q5A6572.jpg)
 //- end: Hero Unit
+
+.team-slider
+  display: flex
+  scroll-snap-type: x mandatory
+  overflow: hidden
+  overflow-x: scroll
+  position: relative
+  backface-visibility: hidden
+  transform: translate3d(0,0,0)
+  width: 100%
+  height: 320px
+
+
+.team-slide
+  scroll-snap-align: center
+  display: block
+  width: 200px
+  flex-shrink: 0
+
+  figure
+    cursor: pointer;
+    margin: 1em;
+    opacity: 0.5;
+    backface-visibility: hidden;
+    transition: transform 450ms $easeInOutSine, opacity 450ms ease-in-out;
+    transform: scale(0.5) translateZ(0px);
+    &:hover
+      opacity: 0.8;
+      transform: scale(0.6) translateZ(0px);
+    &:active
+      opacity: 1;
+      transform: scale(0.7) translateZ(0px);
+    > div
+      border-radius: 5px;
+      position: relative;
+      margin: 2rem auto;
+      width: 120px;
+      height: 120px;
+      overflow: hidden;
+      transform: rotate(45deg) translateZ(0px);
+      > div
+        background: url(/images/team/team.jpg) no-repeat;
+        background-size: cover;
+        background-position: 0px 0px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 170px;
+        height: 170px;
+        transform: rotate(-45deg) translate(0%, -70%);
+    figcaption
+      text-align: center
+      h2
+        color: #111;
+        font-size: 1rem;
+        font-weight: 800;
+      p
+        color: #666;
+        font-size: 0.75rem;
+        font-weight: 400;
+
+  &:nth-child(1) figure > div > div
+    background-position: 0px 0px !important;
+  &:nth-child(2) figure > div > div
+    background-position: 0px 20% !important;
+  &:nth-child(3) figure > div > div
+    background-position: 0px 40% !important;
+  &:nth-child(4) figure > div > div
+    background-position: 0px 60% !important;
+  &:nth-child(5) figure > div > div
+    background-position: 0px 80% !important;
+  &:nth-child(6) figure > div > div
+    background-position: 0px 100% !important;

@@ -97,16 +97,14 @@ html
             p.
               Morite Bird Watching is a small, community-based tour operator located in Masihulan village. All members of the team are native to Seram. With this spirit of community and ecotourism, we’d like to share the rich biodiversity of Seram.
 
-          .outer#carousel
-            .slider--teams
-              .slider--teams__team
-                ul#list
-                  +team-member('Soni Sapulette', 'Head of Team', true)
-                  +team-member('Deni Limehuwey')
-                  +team-member('Cem Limehuwey')
-                  +team-member('P.D.')
-                  +team-member('Zet Patalatu 1')
-                  +team-member('Barkis Patamanue')
+          .inner
+            ul.team-slider
+              +team-member('Soni Sapulette', 'Head of Team')
+              +team-member('Deni Limehuwey', '', true)
+              +team-member('Cem Limehuwey')
+              +team-member('P.D.')
+              +team-member('Zet Patalatu 1')
+              +team-member('Barkis Patamanue')
 
           .inner
             p The nearest airport is Ambon (AMQ), about nine hours away by car and fast boat. Email us for details on getting here.
