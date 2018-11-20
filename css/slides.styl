@@ -1,32 +1,20 @@
 //- start: Hero Unit
-:root
-  --scale-factor: 1.16;
-  --rotate: 1deg;
-  --x-factor: 0px;
-  --transform-duration: 6s;
-
-.slide
-  span.slide-caption
-    position: absolute
-    display: block
-    width: 100%
-    text-align: center
-    top: 49%
-    color: white
-    text-shadow: 1px 1px 5px black
-
+$scaleFactor = 1.16
+$rotate = 1deg
+$xFactor = 20px
+$duration = 6s
 
 @keyframes kenburnsOdd
   0%
     transform: translate3d(0,0,0) scale(1)
   100%
-    transform: translateX(calc(var(--x-factor) * -1)) scale(var(--scale-factor)) rotate(calc(var(--rotate) * -1))
+    transform: translateX(-1 * $xFactor) scale($scaleFactor) rotate(-1 * $rotate)
 
 @keyframes kenburnsEven
   0%
     transform: translate3d(0,0,0) scale(1)
   100%
-    transform: translateX(var(--x-factor)) scale(var(--scale-factor)) rotate(var(--rotate))
+    transform: translateX($xFactor) scale($scaleFactor) rotate($rotate)
 
 // Large Hero
 .slider
@@ -65,7 +53,7 @@
     background-size: cover
 
 .auto-show .on.slide .slide-background
-  animation-duration: var(--transform-duration)
+  animation-duration: $duration
   animation-delay: 1s
   animation-fill-mode: forwards
 
