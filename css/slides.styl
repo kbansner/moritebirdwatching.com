@@ -15,6 +15,19 @@
     color: white
     text-shadow: 1px 1px 5px black
 
+
+@keyframes kenburnsOdd
+  0%
+    transform: translate3d(0,0,0) scale(1)
+  100%
+    transform: translateX(calc(var(--x-factor) * -1)) scale(var(--scale-factor)) rotate(calc(var(--rotate) * -1))
+
+@keyframes kenburnsEven
+  0%
+    transform: translate3d(0,0,0) scale(1)
+  100%
+    transform: translateX(var(--x-factor)) scale(var(--scale-factor)) rotate(var(--rotate))
+
 // Large Hero
 .slider
   display: flex
@@ -51,18 +64,16 @@
     background-repeat: no-repeat
     background-size: cover
 
-.slider.loaded .slide-background
-  transform: translate3d(0,0,0) scale(1)
-
 .on.slide .slide-background
-    transition: var(--transform-duration) transform
-    transition-delay: 1s
+  animation-duration: var(--transform-duration)
+  animation-delay: 1s
+  animation-fill-mode: forwards
 
 .on.slide:nth-child(odd) .slide-background
-  transform: translateX(calc(var(--x-factor) * -1)) scale(var(--scale-factor)) rotate(calc(var(--rotate) * -1))
+  animation-name: kenburnsOdd
 
 .on.slide:nth-child(even) .slide-background
-  transform: translateX(var(--x-factor)) scale(var(--scale-factor)) rotate(var(--rotate))
+  animation-name: kenburnsEven
 
 .is-js .lazyload .slide-background
   background-image: none
