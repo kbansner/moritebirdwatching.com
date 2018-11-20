@@ -29,6 +29,12 @@
       float: none
       width: auto
 
+@keyframes fadeIn
+  0%
+    opacity: 0.5
+  100%
+    opacity: 1
+
 .gallery
   display: flex
   scroll-snap-type: x mandatory
@@ -40,6 +46,15 @@
       margin-left: 20px
     img
       max-width: none
+      opacity: 0.5
+
+
+  picture.on img
+    animation-name: fadeIn
+    animation-duration: 1s
+    // animation-delay: .5s
+    animation-direction: alternate
+    animation-fill-mode: both
 
   picture
     width: 600px

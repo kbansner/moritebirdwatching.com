@@ -39,7 +39,10 @@
          * Main method that checks the elements and adds or removes the class(es)
          */
         this.checkElements = function(){
-            var viewportStart, viewportEnd;
+            var viewportStart, viewportEnd, offsetMethod;
+
+            // If scrollBox is a of the object this is a slider viewport
+            offsetMethod = ($elem.eq(0).parent()[0] === options.scrollBox) ? 'position' : 'offset';
 
             // Set some vars to check with
             if (!options.scrollHorizontal){
@@ -97,7 +100,7 @@
                     objOptions.offset = (parseInt(objOptions.offset) / 100) * boxSize.height;
 
                 // Get the raw start and end positions
-                var rawStart = (!objOptions.scrollHorizontal) ? $obj.offset().top : $obj.offset().left,
+                var rawStart = (!objOptions.scrollHorizontal) ? $obj[offsetMethod]().top : $obj[offsetMethod]().left,
                     rawEnd = (!objOptions.scrollHorizontal) ? rawStart + $obj.height() : rawStart + $obj.width();
 
                 // Add the defined offset
