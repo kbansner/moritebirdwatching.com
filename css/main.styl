@@ -2,11 +2,11 @@
 @import 'vars'
 @import 'grids'
 @import 'slides'
-@import 'carousel'
 
 big-screen-margin(big = $inner-width)
   margin: 0 auto
   width: big
+  max-width: $outer-maxWidth
 
 small-screen-margin(small = $inner-margin-phone)
   padding-left: small
@@ -40,7 +40,7 @@ html
 
 nav.nav-top
   clearfix()
-  screen-margin()
+  screen-margin($outer-width, $outer-margin-phone)
   padding: 15px
   font-size: 0.8rem
   a
@@ -76,7 +76,8 @@ h1#headline
 
 h1
   margin: 1rem 0
-  font-size: 2.5rem
+  font-size: 2.3rem
+  line-height: 1.1
   font-weight: normal
 
 @media(max-width: $breakpoint-phone)
@@ -108,37 +109,36 @@ article
   ul
     padding-left: 2rem
 
-  .outer
-    screen-margin(95%)
-  .inner
-    screen-margin()
-    padding-top: 1rem
-    padding-bottom: 2rem
-    @media(max-width: $breakpoint-phone)
-      padding-bottom: $inner-margin-phone
-
-    & + .inner
-    & + .boxed
-      padding-top: 0
-    .boxed
-      padding-bottom: 0
-
-    & > picture
-      margin-top: 2rem
-      margin-bottom: 2rem
-
-  .boxed
-    clearfix()
-    padding: 1rem
-
-    & + .inner
-      padding-top: 0
-    figcaption
-      margin: $gutter-spacing 0
-
+.outer
+  screen-margin($outer-width, $outer-margin-phone)
+.inner
+  screen-margin()
+  padding-top: 1rem
+  padding-bottom: 2rem
   @media(max-width: $breakpoint-phone)
-    p
-      margin: 0.5em 0
+    padding-bottom: $inner-margin-phone
+
+  & + .inner
+    padding-top: 0
+
+  & > picture
+    margin-top: 2rem
+    margin-bottom: 2rem
+
+.boxed
+  clearfix()
+  screen-margin($outer-width, $outer-maxWidth)
+
+  figcaption
+    margin: $gutter-spacing 0
+
+  & + .inner
+    padding-top: 0
+
+
+@media(max-width: $breakpoint-phone)
+  p
+    margin: 0.5em 0
 
 picture
   display: block
