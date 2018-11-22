@@ -81,7 +81,7 @@ $(document).ready(function() {
   $.each($sliders, function(i, ele){
     var currSlide = 0;
     var $slides = $(ele);
-    $slides.children('picture').viewportChecker({
+    $slides.children('img').viewportChecker({
       scrollHorizontal: true,
       classToAdd: '',
       classToAddForFullView: 'on',

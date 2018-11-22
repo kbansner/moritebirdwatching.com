@@ -62,11 +62,7 @@ mixin main-js
     include inline2.js
 
 mixin tour-picture(url, alt)
-  picture
-    img(src='images/services/'+url, width='450', height='300', alt=alt)
-    if alt
-      figure
-        =alt
+  img(src='images/services/'+url, width='450', height='300', alt=alt)
 
 mixin tour(title, size, duration, pictures)
   .tour
