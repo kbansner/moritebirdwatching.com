@@ -34,7 +34,7 @@ $(document).ready(function() {
   var $slider = $('.slider');
   var $slides = $slider.children('.slide');
   var nextSlide = function(){
-    console.log('nextSlide', $slides.length, currSlide);
+    //console.log('nextSlide', $slides.length, currSlide);
     if (currSlide < $slides.length -1) {
       $slider[0].scrollBy({left: $slider.width(), behavior: 'smooth'})
       bindNext(currSlide + 1);
@@ -86,24 +86,23 @@ $(document).ready(function() {
       classToAdd: '',
       classToAddForFullView: 'on',
       repeat: true,
-      scrollBox: ele
-      // callbackFunction: function($elem, action){
-      //   currSlide = $slides.index($slides.filter('.on'));
-      // }
+      scrollBox: ele,
+      callbackFunction($elem, action){
+        console.log($elem, action);
+      }
     });
-    // var nextSlide = function(){
-    //   console.log('nextSlide', $slides.length, currSlide);
-    //   if (currSlide < $slides.length -1) {
-    //     $slides[0].scrollBy({left: $slides.width(), behavior: 'smooth'})
-    //     bindNext(currSlide + 1);
-    //   }
-    //   else {
-    //     $slides[0].scrollTo({left: 0, behavior: 'smooth'});
-    //   }
-    // }
-    // var bindNext = function(i){
-    //   $slides.eq(i).find('img').one('animationend', nextSlide);
-    // }
-    // bindNext(0);
   })
+});
+
+$(document).ready(function() {
+  var $slider = $('ul.team-slider');
+  var $slides = $slider.children('.team-slide');
+  var currSlide = 0;
+  $slides.viewportChecker({
+    scrollHorizontal: true,
+    classToAdd: '',
+    classToAddForFullView: 'active',
+    repeat: true,
+    scrollBox: $slider[0]
+  });
 });
