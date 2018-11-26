@@ -220,7 +220,7 @@ $duration = 6s
 .team-slide
   scroll-snap-align: center
   display: block
-  width: 200px
+  width: 33%
   flex-shrink: 0
 
   figure
@@ -265,15 +265,20 @@ $duration = 6s
         font-size: 0.75rem;
         font-weight: 400;
 
-  &:nth-child(1) figure > div > div
-    background-position: 0px 0px !important;
   &:nth-child(2) figure > div > div
-    background-position: 0px 20% !important;
+    background-position: 0px 0px !important;
   &:nth-child(3) figure > div > div
-    background-position: 0px 40% !important;
+    background-position: 0px 20% !important;
   &:nth-child(4) figure > div > div
-    background-position: 0px 60% !important;
+    background-position: 0px 40% !important;
   &:nth-child(5) figure > div > div
-    background-position: 0px 80% !important;
+    background-position: 0px 60% !important;
   &:nth-child(6) figure > div > div
+    background-position: 0px 80% !important;
+  &:nth-child(7) figure > div > div
     background-position: 0px 100% !important;
+
+.active + .active figure {
+  opacity: 1 !important;
+  transform: scale(1) translateZ(0px) !important;
+}
