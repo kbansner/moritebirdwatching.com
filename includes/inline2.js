@@ -28,7 +28,7 @@ $(document).ready(function() {
     });
 });
 
-
+// Hero Slider
 $(document).ready(function() {
   var currSlide = 0;
   var $slider = $('.slider');
@@ -76,6 +76,7 @@ $(document).ready(function() {
   });
 });
 
+// Tours Slider
 $(document).ready(function() {
   var $sliders = $('.gallery');
   $.each($sliders, function(i, ele){
@@ -88,21 +89,62 @@ $(document).ready(function() {
       repeat: true,
       scrollBox: ele,
       callbackFunction($elem, action){
-        console.log($elem, action);
+        // console.log($elem, action);
       }
     });
   })
 });
 
+
+// Team Slider
 $(document).ready(function() {
   var $slider = $('ul.team-slider');
   var $slides = $slider.children('.team-slide');
   var currSlide = 0;
+  var timer = null;
+  var nextSlide = function(){
+    console.log('nextSlide', $slides.length, currSlide, $slider.width());
+    if (currSlide < $slides.length -2) {
+      $slider[0].scrollBy({left: $slides.eq(1).width(), behavior: 'smooth'})
+      bindNext(currSlide + 1);
+    }
+    else {
+      $slider[0].scrollTo({left: 0, behavior: 'smooth'});
+      bindNext(currSlide + 1);
+    }
+  }
+  var bindNext = function(i){
+    console.log('bind', i)
+    timer = setTimeout(nextSlide, 2000);
+    // $slides.eq(i).find('figure').one('animationend', function(){alert('foo')});
+  }
+  var moveToSlide = function(elem){
+    clearTimeout(timer);
+    var newSlide = $slides.index(elem.currentTarget)
+    var move = (newSlide - currSlide) * $slides.eq(1).width()
+    $slider[0].scrollBy({left: move, behavior: 'smooth'})
+  }
+  $slider.on('click', '.team-slide', moveToSlide)
+
   $slides.viewportChecker({
     scrollHorizontal: true,
     classToAdd: '',
     classToAddForFullView: 'active',
     repeat: true,
-    scrollBox: $slider[0]
+    scrollBox: $slider[0],
+    callbackFunction: function($elem, action){
+      if (action==='add') {
+        console.log($slides.index($slides.filter('.active:last')))
+        currSlide = $slides.index($slides.filter('.active:last'));
+      } else {
+        console.log('remove')
+      }
+    }
   });
+
+  setTimeout(function(){
+    console.log('start')
+    bindNext(1);
+  },2000)
+
 });
