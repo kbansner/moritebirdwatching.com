@@ -1,3 +1,13 @@
+function throttle(fn, wait) {
+  var time = Date.now();
+  return function() {
+    if ((time + wait - Date.now()) < 0) {
+      fn();
+      time = Date.now();
+    }
+  }
+}
+
 //initial fade in
 $(document).ready(function() {
   $('#main').addClass('is-js');
@@ -98,23 +108,22 @@ $(document).ready(function() {
 
 // Team Slider
 $(document).ready(function() {
-  var $slider = $('ul.team-slider');
+  var $slider = $('.team-slider');
   var $slides = $slider.children('.team-slide');
   var currSlide = 0;
   var timer = null;
   var nextSlide = function(){
-    console.log('nextSlide', $slides.length, currSlide, $slider.width());
-    if (currSlide < $slides.length -2) {
+    //console.log('nextSlide', $slides.length, currSlide, $slides.length -1);
+    if (currSlide < $slides.length -1) {
       $slider[0].scrollBy({left: $slides.eq(1).width(), behavior: 'smooth'})
       bindNext(currSlide + 1);
     }
     else {
       $slider[0].scrollTo({left: 0, behavior: 'smooth'});
-      bindNext(currSlide + 1);
+      bindNext(0);
     }
   }
-  var bindNext = function(i){
-    console.log('bind', i)
+  var bindNext = function(){
     timer = setTimeout(nextSlide, 2000);
     // $slides.eq(i).find('figure').one('animationend', function(){alert('foo')});
   }
@@ -124,6 +133,22 @@ $(document).ready(function() {
     var move = (newSlide - currSlide) * $slides.eq(1).width()
     $slider[0].scrollBy({left: move, behavior: 'smooth'})
   }
+  var setCurrentSlide = function(){
+    console.log('currSlide', currSlide);
+    currSlide = $slides.index($slides.filter('.active:first'));
+  }
+
+  $slider.on('touchstart', function(){
+    clearTimeout(timer);
+  });
+
+  $slider.on('wheel', function(e){
+    if(Math.abs(e.originalEvent.deltaX) > 20) {
+      clearTimeout(timer);
+      console.log('scrolling sideways', Math.abs(e.originalEvent.deltaX));
+    }
+  });
+
   $slider.on('click', '.team-slide', moveToSlide)
 
   $slides.viewportChecker({
@@ -132,19 +157,31 @@ $(document).ready(function() {
     classToAddForFullView: 'active',
     repeat: true,
     scrollBox: $slider[0],
+    // callbackFunction: function($elem, action){
+    //   if (action==='add') {
+    //     console.log('add')
+    //     _.throttle(setCurrentSlide, 10);
+    //   } else {
+    //     console.log('remove')
+    //   }
+    // }
+    callbackFunction: throttle(setCurrentSlide, 500)
+  });
+  $slider.viewportChecker({
+    classToAdd: 'launch',
+    repeat: true,
+    scrollBox: '#main',
     callbackFunction: function($elem, action){
       if (action==='add') {
-        console.log($slides.index($slides.filter('.active:last')))
-        currSlide = $slides.index($slides.filter('.active:last'));
+        console.log('launch');
       } else {
-        console.log('remove')
+        console.log('!!!!!!!!remove');
       }
     }
   });
-
   setTimeout(function(){
     console.log('start')
-    bindNext(1);
+    bindNext(0);
   },2000)
 
 });
