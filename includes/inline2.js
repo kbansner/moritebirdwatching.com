@@ -114,18 +114,18 @@ $(document).ready(function() {
   var timer = null;
   var nextSlide = function(){
     //console.log('nextSlide', $slides.length, currSlide, $slides.length -1);
+    setCurrentSlide()
     if (currSlide < $slides.length -1) {
       $slider[0].scrollBy({left: $slides.eq(1).width(), behavior: 'smooth'})
-      bindNext(currSlide + 1);
+      bindNext();
     }
     else {
       $slider[0].scrollTo({left: 0, behavior: 'smooth'});
-      bindNext(0);
+      bindNext();
     }
   }
   var bindNext = function(){
     timer = setTimeout(nextSlide, 2000);
-    // $slides.eq(i).find('figure').one('animationend', function(){alert('foo')});
   }
   var moveToSlide = function(elem){
     clearTimeout(timer);
@@ -134,8 +134,8 @@ $(document).ready(function() {
     $slider[0].scrollBy({left: move, behavior: 'smooth'})
   }
   var setCurrentSlide = function(){
+    currSlide = $slides.index($slides.filter('.active'));
     console.log('currSlide', currSlide);
-    currSlide = $slides.index($slides.filter('.active:first'));
   }
 
   $slider.on('touchstart', function(){
@@ -156,32 +156,12 @@ $(document).ready(function() {
     classToAdd: '',
     classToAddForFullView: 'active',
     repeat: true,
-    scrollBox: $slider[0],
-    // callbackFunction: function($elem, action){
-    //   if (action==='add') {
-    //     console.log('add')
-    //     _.throttle(setCurrentSlide, 10);
-    //   } else {
-    //     console.log('remove')
-    //   }
-    // }
-    callbackFunction: throttle(setCurrentSlide, 500)
+    scrollBox: $slider[0]
+    // callbackFunction: throttle(setCurrentSlide, 100)
   });
   $slider.viewportChecker({
     classToAdd: 'launch',
-    repeat: true,
     scrollBox: '#main',
-    callbackFunction: function($elem, action){
-      if (action==='add') {
-        console.log('launch');
-      } else {
-        console.log('!!!!!!!!remove');
-      }
-    }
+    callbackFunction: throttle(bindNext, 1000)
   });
-  setTimeout(function(){
-    console.log('start')
-    bindNext(0);
-  },2000)
-
 });

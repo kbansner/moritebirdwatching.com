@@ -6,7 +6,6 @@ $duration = 6s
 
 
 // Ease
-
 $easeInOutBack = cubic-bezier(0.680, -0.550, 0.265, 1.550);
 $easeOutBack = cubic-bezier(0.175, 0.885, 0.320, 1.275);
 $easeInOutSine = cubic-bezier(0.445, 0.050, 0.550, 0.950);
@@ -213,29 +212,37 @@ $easeInOutSine = cubic-bezier(0.445, 0.050, 0.550, 0.950);
 //- end: Hero Unit
 
 .team-slider
+  position: relative
   display: flex
   scroll-snap-type: x mandatory
   overflow: hidden
   overflow-x: scroll
-  position: relative
+  padding: 0
   backface-visibility: hidden
   transform: translate3d(0,0,0)
   width: 100%
   height: 320px
+  height: 95%
+  scroll-padding: 0 50%
 
-
+.team-blank
 .team-slide
   scroll-snap-align: center
+  poistion: relative
   display: block
-  width: 33%
+  width: 36%
   flex-shrink: 0
-
+  $portraitWidth = 15vw
+  // box-sizing: border-box;
+  @media(max-width: $breakpoint-phone)
+    width: 100%
   figure
     cursor: pointer;
     margin: 1em;
     opacity: 0.5;
     backface-visibility: hidden;
     transition: transform 450ms $easeInOutSine, opacity 450ms ease-in-out;
+    transition-delay: 50ms, 50ms
     transform: scale(0.5) translateZ(0px);
     // transition-duration: 1s
     &:hover
@@ -248,8 +255,15 @@ $easeInOutSine = cubic-bezier(0.445, 0.050, 0.550, 0.950);
       border-radius: 5px;
       position: relative;
       margin: 2rem auto;
-      width: 120px;
-      height: 120px;
+      width: $portraitWidth * 0.7;
+      height: $portraitWidth * 0.7;
+      max-width: 120px
+      max-height: 120px
+
+      @media(max-width: $breakpoint-phone)
+        width: $portraitWidth * 0.7 * 4;
+        height: $portraitWidth * 0.7 * 4;
+
       overflow: hidden;
       transform: rotate(45deg) translateZ(0px);
       > div
@@ -259,8 +273,14 @@ $easeInOutSine = cubic-bezier(0.445, 0.050, 0.550, 0.950);
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 170px;
-        height: 170px;
+        width: $portraitWidth;
+        height: $portraitWidth;
+        max-width: 170px
+        max-height: 170px
+        @media(max-width: $breakpoint-phone)
+          width: $portraitWidth * 4;
+          height: $portraitWidth * 4;
+
         transform: rotate(-45deg) translate(0%, -70%);
     figcaption
       text-align: center
@@ -273,44 +293,48 @@ $easeInOutSine = cubic-bezier(0.445, 0.050, 0.550, 0.950);
         font-size: 0.75rem;
         font-weight: 400;
 
-  &:nth-child(2) figure > div > div
-    background-position: 0px 0px !important;
-  &:nth-child(3) figure > div > div
-    background-position: 0px 20% !important;
-  &:nth-child(4) figure > div > div
-    background-position: 0px 40% !important;
-  &:nth-child(5) figure > div > div
-    background-position: 0px 60% !important;
-  &:nth-child(6) figure > div > div
-    background-position: 0px 80% !important;
-  &:nth-child(7) figure > div > div
-    background-position: 0px 100% !important;
+.team-slide:nth-of-type(1) figure > div > div
+  background-position: 0px 0px !important;
+.team-slide:nth-of-type(2) figure > div > div
+  background-position: 0px 20% !important;
+.team-slide:nth-of-type(3) figure > div > div
+  background-position: 0px 40% !important;
+.team-slide:nth-of-type(4) figure > div > div
+  background-position: 0px 60% !important;
+.team-slide:nth-of-type(5) figure > div > div
+  background-position: 0px 80% !important;
+.team-slide:nth-of-type(6) figure > div > div
+  background-position: 0px 100% !important;
 
-.active + .active figure
-  opacity: 1 !important;
-  transform: scale(1) translateZ(0px) !important;
-  transition-duration: 1s
-//   animation-name: expandTeam
-//   animation-duration: 1s
-//   animation-fill-mode: forwards
-//
-// figure
-//   animation-name: contractTeam
-//   animation-duration: 1s
-//   animation-fill-mode: forwards
-//
-// @keyframes expandTeam
-//   from
-//     opacity: 0.5
-//     transform: scale(0.5)
-//   to
-//     opacity: 1
-//     transform: scale(1) translateZ(0px)
-//
-// @keyframes contractTeam
-//   from
-//     opacity: 1
-//     transform: scale(1) translateZ(0px)
-//   to
-//     opacity: 0.5
-//     transform: scale(0.5) translateZ(0px)
+@media(max-width: $breakpoint-phone)
+  .team-blank
+    display: none
+.active figure
+  // opacity: 1 !important;
+  // transform: scale(1) translateZ(0px) !important;
+  // transition-duration: 1s
+  animation-name: expandTeam
+  animation-duration: 1s
+  animation-fill-mode: forwards
+
+figure
+  animation-name: contractTeam
+  animation-duration: 1s
+  animation-fill-mode: forwards
+  transition-delay: 50ms, 50ms
+
+@keyframes expandTeam
+  from
+    opacity: 0.5
+    transform: scale(0.5)
+  to
+    opacity: 1
+    transform: scale(1) translateZ(0px)
+
+@keyframes contractTeam
+  from
+    opacity: 1
+    transform: scale(1) translateZ(0px)
+  to
+    opacity: 0.5
+    transform: scale(0.5) translateZ(0px)
