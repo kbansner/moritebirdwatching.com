@@ -114,24 +114,27 @@ $(document).ready(function() {
   var timer = null;
   var nextSlide = function(){
     //console.log('nextSlide', $slides.length, currSlide, $slides.length -1);
-    setCurrentSlide()
+    // setCurrentSlide()
     if (currSlide < $slides.length -1) {
-      $slider[0].scrollBy({left: $slides.eq(1).width(), behavior: 'smooth'})
+      $slider[0].scrollBy({left: $slides.eq(2).width(), behavior: 'smooth'})
+      currSlide += 1;
       bindNext();
     }
     else {
       $slider[0].scrollTo({left: 0, behavior: 'smooth'});
+      currSlide = 0;
       bindNext();
     }
+    console.log('currSlide', currSlide);
   }
   var bindNext = function(){
     // console.log('bindNext')
     timer = setTimeout(nextSlide, 3000);
   }
-  var setCurrentSlide = function(){
-    currSlide = $slides.index($slides.filter('.active'));
-    // console.log('currSlide', currSlide);
-  }
+  // var setCurrentSlide = function(){
+  //   currSlide = $slides.index($slides.filter('.active'));
+  //   // console.log('currSlide', currSlide);
+  // }
 
   $slider.on('touchstart', function(){
     clearTimeout(timer);
