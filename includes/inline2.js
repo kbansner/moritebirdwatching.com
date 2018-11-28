@@ -125,17 +125,12 @@ $(document).ready(function() {
     }
   }
   var bindNext = function(){
-    timer = setTimeout(nextSlide, 2000);
-  }
-  var moveToSlide = function(elem){
-    clearTimeout(timer);
-    var newSlide = $slides.index(elem.currentTarget)
-    var move = (newSlide - currSlide) * $slides.eq(1).width()
-    $slider[0].scrollBy({left: move, behavior: 'smooth'})
+    // console.log('bindNext')
+    timer = setTimeout(nextSlide, 3000);
   }
   var setCurrentSlide = function(){
     currSlide = $slides.index($slides.filter('.active'));
-    console.log('currSlide', currSlide);
+    // console.log('currSlide', currSlide);
   }
 
   $slider.on('touchstart', function(){
@@ -143,13 +138,11 @@ $(document).ready(function() {
   });
 
   $slider.on('wheel', function(e){
-    if(Math.abs(e.originalEvent.deltaX) > 20) {
+    if(Math.abs(e.originalEvent.deltaX) > 10) {
       clearTimeout(timer);
-      console.log('scrolling sideways', Math.abs(e.originalEvent.deltaX));
+      // console.log('scrolling sideways', Math.abs(e.originalEvent.deltaX));
     }
   });
-
-  $slider.on('click', '.team-slide', moveToSlide)
 
   $slides.viewportChecker({
     scrollHorizontal: true,
@@ -162,6 +155,6 @@ $(document).ready(function() {
   $slider.viewportChecker({
     classToAdd: 'launch',
     scrollBox: '#main',
-    callbackFunction: throttle(bindNext, 1000)
+    callbackFunction: bindNext
   });
 });
