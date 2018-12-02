@@ -41,7 +41,7 @@
         this.checkElements = function(){
             var viewportStart, viewportEnd, offsetMethod;
 
-            // If scrollBox is a of the object this is a slider viewport
+            // If scrollBox is the object, this is a slider viewport
             offsetMethod = ($elem.eq(0).parent()[0] === options.scrollBox) ? 'position' : 'offset';
 
             // Set some vars to check with
@@ -121,7 +121,8 @@
                     objOptions.callbackFunction($obj, "add");
 
                     // Check if full element is in view
-                    if (rawEnd <= viewportEnd && rawStart >= viewportStart)
+                    if (rawEnd + objOptions.offset <= viewportEnd && rawStart - objOptions.offset >= viewportStart)
+                        // throttle(function(){$obj.addClass(objOptions.classToAddForFullView);}, 1000);
                         $obj.addClass(objOptions.classToAddForFullView);
                     else
                         $obj.removeClass(objOptions.classToAddForFullView);
