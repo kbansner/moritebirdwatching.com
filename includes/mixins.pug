@@ -36,6 +36,18 @@ mixin navigation-home
     +link('index.html#tours', 'Tours')
     +link('index.html#birds', 'Birds')
 
+mixin coverFlow
+  #cover-items
+    - var n = 0
+    while n < 12
+      - n++
+      .cover-item(class='slide'+n)
+    - n = 0
+  #cover-grips
+    while n < 12
+      - n++
+      .cover-grip
+      
 mixin slider
   - var n = 0
   .slider.auto-show

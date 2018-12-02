@@ -22,6 +22,54 @@ $easeInOutSine = cubic-bezier(0.445, 0.050, 0.550, 0.950);
   100%
     transform: translateX($xFactor) scale($scaleFactor) rotate($rotate)
 
+// begin: New Hero
+#cover-items
+  position: absolute
+  width: 100%
+  height: 560px
+  max-height: 70vw
+  .cover-item
+    position: absolute
+    width: 100%
+    height: 100%
+    background-position: center
+    background-repeat: no-repeat
+    background-size: cover
+    opacity: 0
+    // transition: 1s opacity linear
+    &.show
+      opacity: 1
+
+    &.show
+      animation-duration: $duration
+      animation-fill-mode: forwards
+
+    &.show:nth-child(odd)
+      animation-name: kenburnsOdd
+
+    &.show:nth-child(even)
+      animation-name: kenburnsEven
+
+#cover-grips
+  position: relative
+  scroll-snap-type: x mandatory
+  overflow: hidden
+  overflow-x: scroll
+  white-space: nowrap
+  height: 560px
+  max-height: 70vw
+
+  .cover-grip
+    box-sizing: border-box;
+    outline: 2px dotted white
+    scroll-snap-align: center
+    display: inline-block
+    width: 80%
+    height: 100%
+
+
+// end: New hero
+
 // Large Hero
 .slider
   display: flex

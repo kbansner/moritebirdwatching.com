@@ -163,3 +163,25 @@ $(document).ready(function() {
     callbackFunction: bindNext
   });
 });
+
+
+// New Slide Show
+$(document).ready(function(){
+  var curr;
+  var currentGrip = function(){
+    curr = $('.cover-grip').index($('.cover-grip.on'));
+    console.log('curr', curr);
+    $('.cover-item').removeClass('show').eq(curr).addClass('show');
+  }
+  // currentGrip()
+  $('.cover-grip').viewportChecker({
+      scrollHorizontal: true,
+      classToAdd: 'on',
+      classToAddForFullView: 'full',
+      repeat: true,
+      offset: -20,
+      scrollBox: $('#cover-grips')[0],
+      callbackFunction: debounce(currentGrip, 50)
+    });
+
+});
