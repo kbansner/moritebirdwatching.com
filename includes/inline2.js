@@ -167,9 +167,10 @@ $(document).ready(function() {
 
 // New Slide Show
 $(document).ready(function(){
-  var curr;
+  var curr = 0
   var currentGrip = function(){
-    curr = $('.cover-grip').index($('.cover-grip.on'));
+    c = $('.cover-grip').index($('.cover-grip.full'));
+    curr = (c > -1) ? c : curr;
     console.log('curr', curr);
     $('.cover-item').removeClass('show').eq(curr).addClass('show');
   }

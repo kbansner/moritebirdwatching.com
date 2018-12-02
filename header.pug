@@ -1,0 +1,15 @@
+include includes/mixins.pug
+
+doctype html
+html
+  head
+    +head('Welcome')
+
+  body#welcome
+    #main
+      header
+        +navigation
+        +coverFlow
+
+      +footer
+    +main-js
