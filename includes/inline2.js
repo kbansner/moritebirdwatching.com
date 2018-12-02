@@ -56,21 +56,22 @@ $(document).ready(function() {
   var bindNext = function(i){
     $slides.eq(i).find('.slide-background').one('animationend', nextSlide);
   }
+
+  var slideCallback = function(){
+    var c = $slides.index($slides.filter('.on'));
+    currSlide = c > -1 ? c : currSlide;
+    $slides.slice(1, currSlide + 3).removeClass('lazyload');
+    console.log('currSlide', currSlide);
+  }
   bindNext(0);
   $slides.viewportChecker({
     scrollHorizontal: true,
-    classToAdd: 'on',
-    classToAddForFullView: '',
+    classToAdd: '',
+    classToAddForFullView: 'on',
     repeat: true,
+    offset: 0,
     scrollBox: $slider[0],
-    callbackFunction: function($elem, action){
-      if (action==='add') {
-        $elem.next().removeClass('lazyload')
-          .next().removeClass('lazyload');
-      } else {
-        currSlide = $slides.index($slides.filter('.on'));
-      }
-    }
+    callbackFunction: debounce(slideCallback, 100)
   });
   $slider.viewportChecker({
     scrollHorizontal: false,
@@ -152,6 +153,7 @@ $(document).ready(function() {
     classToAdd: '',
     classToAddForFullView: 'active',
     repeat: true,
+    offset: 10,
     scrollBox: $slider[0]
     // callbackFunction: throttle(setCurrentSlide, 100)
   });
