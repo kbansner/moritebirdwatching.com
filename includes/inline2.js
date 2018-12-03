@@ -167,22 +167,37 @@ $(document).ready(function() {
 
 // New Slide Show
 $(document).ready(function(){
-  var curr = 0
+  var curr = 0;
+  console.log('curr', curr);
+  var $grips = $('.cover-grip');
   var currentGrip = function(){
-    c = $('.cover-grip').index($('.cover-grip.full'));
+    c = $grips.index($grips.filter('.full'));
     curr = (c > -1) ? c : curr;
     console.log('curr', curr);
     $('.cover-item').removeClass('show').eq(curr).addClass('show');
   }
-  // currentGrip()
-  $('.cover-grip').viewportChecker({
-      scrollHorizontal: true,
-      classToAdd: 'on',
-      classToAddForFullView: 'full',
-      repeat: true,
-      offset: -20,
-      scrollBox: $('#cover-grips')[0],
-      callbackFunction: debounce(currentGrip, 50)
-    });
+  $grips.viewportChecker({
+    scrollHorizontal: true,
+    classToAdd: 'on',
+    classToAddForFullView: 'full',
+    repeat: true,
+    offset: -20,
+    scrollBox: $('#cover-grips')[0],
+    callbackFunction: debounce(currentGrip, 50)
+  });
+
+  var nextSlide = function(reverse){
+    var reverse = reverse || false;
+    if (curr < $grips.length -1 && !reverse) {
+      $('#cover-grips')[0].scrollBy({left: $grips.eq(2).width(), behavior: 'smooth'});
+      curr += 1;
+      console.log('next');
+    }
+    else {
+      $('#cover-grips')[0].scrollTo({left: 0, behavior: 'smooth'});
+      curr = 0;
+    }
+  }
+  $('#cover-grips').on('click', '.previous', function(){nextSlide()});
 
 });
