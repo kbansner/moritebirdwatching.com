@@ -88,12 +88,13 @@ $easeInOutSine = cubic-bezier(0.445, 0.050, 0.550, 0.950);
   .next
     position absolute
     // left calc(100% - 2rem)
-    right -2rem
+    right 0
     top calc(50% - 2rem)
-    width 4rem
+    width 2rem
     height 4rem
     background-color #21313c
-    border-radius 50%
+    // border-radius 50%
+    clip-path circle(2rem at 100% 50%)
     mix-blend-mode overlay
     opacity 0
     transition 1500ms 0s opacity ease-out
@@ -111,13 +112,15 @@ $easeInOutSine = cubic-bezier(0.445, 0.050, 0.550, 0.950);
       border-radius 2px
       transform rotate(-45deg)
 
-  &.on > .next
+  &.full > .next
+  &.full > .previous
     opacity 1
     transition-delay 500ms
 
   .previous
-    opacity 1
-    left -2rem
+    // opacity 1
+    left 0
+    clip-path circle(2rem at 0 50%)
     &::after
       right .4rem
       left auto
