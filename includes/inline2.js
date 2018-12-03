@@ -186,18 +186,23 @@ $(document).ready(function(){
     callbackFunction: debounce(currentGrip, 50)
   });
 
-  var nextSlide = function(reverse){
-    var reverse = reverse || false;
-    if (curr < $grips.length -1 && !reverse) {
-      $('#cover-grips')[0].scrollBy({left: $grips.eq(2).width(), behavior: 'smooth'});
-      curr += 1;
-      console.log('next');
-    }
-    else {
-      $('#cover-grips')[0].scrollTo({left: 0, behavior: 'smooth'});
-      curr = 0;
-    }
+  var nextSlide = function(){
+    $('#cover-grips')[0].scrollBy({left: $grips.eq(1).width(), behavior: 'smooth'});
+    curr += 1;
+    console.log('next');
   }
-  $('#cover-grips').on('click', '.previous', function(){nextSlide()});
+
+  var slidePrevious = function(){
+    $('#cover-grips')[0].scrollBy({left: -1 * $grips.eq(1).width(), behavior: 'smooth'});
+    curr -= 1;
+  }
+
+  var slideReset = function(){
+    $('#cover-grips')[0].scrollTo({left: 0, behavior: 'smooth'});
+    curr = 0;
+  }
+
+  $('#cover-grips').on('click', '.next', nextSlide);
+  $('#cover-grips').on('click', '.previous', slidePrevious);
 
 });
