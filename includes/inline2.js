@@ -175,6 +175,13 @@ $(document).ready(function(){
     curr = (c > -1) ? c : curr;
     console.log('curr', curr);
     $('.cover-item').removeClass('show').eq(curr).addClass('show');
+    if (c === 3) {
+      $('#bgvid')[0].play();
+    }
+    else {
+      $('#bgvid')[0].pause();
+    }
+
   }
   $grips.viewportChecker({
     scrollHorizontal: true,
