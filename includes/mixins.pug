@@ -38,7 +38,13 @@ mixin navigation-home
 
 mixin coverFlow
   #cover-items
-    - var n = 0
+    .cover-item(class='slide1')
+    .cover-item(class='slide2')
+    .cover-item(class='slide3')
+    .cover-item(class='slide4')
+      video(id="bgvid", playsinline, muted, loop)
+        source(src="images/hero/cockatoo/md/baby-feed.mp4", type="video/mp4")
+    - var n = 4
     while n < 12
       - n++
       .cover-item(class='slide'+n)

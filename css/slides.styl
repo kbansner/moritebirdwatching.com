@@ -44,26 +44,14 @@ $easeInOutSine = cubic-bezier(0.445, 0.050, 0.550, 0.950);
     transition $duration transform $easeInOutSine, 1s opacity ease-in
     opacity 0
     transform translate3d(0,0,0) scale(1)
-    // &.on
     &.show
       opacity 1
-      // transition-delay 1s 1s
 
     &.show:nth-child(odd)
       transform: translateX(-1 * $xFactor) scale($scaleFactor) rotate(-1 * $rotate)
 
     &.show:nth-child(even)
       transform: translateX($xFactor) scale($scaleFactor) rotate($rotate)
-
-    // &.show
-    //   animation-duration: $duration
-    //   animation-fill-mode: forwards
-    //
-    // &.show:nth-child(odd)
-    //   animation-name: kenburnsOdd
-    //
-    // &.show:nth-child(even)
-    //   animation-name: kenburnsEven
 
 #cover-grips
   position: relative
@@ -87,7 +75,6 @@ $easeInOutSine = cubic-bezier(0.445, 0.050, 0.550, 0.950);
   .previous
   .next
     position absolute
-    // left calc(100% - 2rem)
     right 0
     top calc(50% - 2rem)
     width 2rem
@@ -134,7 +121,7 @@ $easeInOutSine = cubic-bezier(0.445, 0.050, 0.550, 0.950);
   .info
     position absolute
     left 50%
-    top 70%
+    bottom 10%
     width: 40%
     white-space normal
     font-size 1.1rem
