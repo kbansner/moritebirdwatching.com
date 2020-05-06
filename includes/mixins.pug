@@ -20,6 +20,22 @@ mixin head(pageTitle)
 mixin link(href, name)
   a(href=href)&attributes(attributes)= name
 
+mixin hamburger
+  #hamburger
+    button.js-menu.menu(type = "button")
+      span.bar
+    nav
+      ul
+        li 
+          +link('#birds', 'Birds')
+        li 
+          +link('#tours', 'Tours')
+        li
+          +link('#team', 'Team')
+        li
+          +link('#contact', 'Contact')
+
+      
 mixin navigation
   nav.nav-top
     a.logo(href='#') Morite Birdwatching
