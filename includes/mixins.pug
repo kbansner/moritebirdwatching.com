@@ -1,13 +1,6 @@
 mixin head(pageTitle)
   meta(charset='utf-8')
   meta(name='viewport', content='width=device-width, initial-scale=1')
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  script(async, src="https://www.googletagmanager.com/gtag/js?id=UA-126209656-1")
-  script.
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-126209656-1');
 
   link(href='https://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet')
   link(href='/css/normalize-min.css', rel='stylesheet', type='text/css')
@@ -90,7 +83,7 @@ mixin footer
       +link('#main', 'Top')
 
 mixin main-js
-  script(src="http://code.jquery.com/jquery-2.2.4.min.js", integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=", crossorigin="anonymous")
+  script(src="https://code.jquery.com/jquery-2.2.4.min.js", integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=", crossorigin="anonymous")
   script(src='/js/smoothscroll-min.js')
   -//script(src='http://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.5.0/lodash.min.js')
   -//script(src='/js/carousel-min.js')
@@ -99,6 +92,17 @@ mixin main-js
 
   script(type='text/javascript')
     include inline2.js
+    
+  .
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/7.14.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/7.14.2/firebase-analytics.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js"></script>
 
 mixin tour-picture(url, alt)
   img(src='images/services/'+url, width='450', height='300', alt=alt)
