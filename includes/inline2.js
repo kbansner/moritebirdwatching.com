@@ -61,7 +61,7 @@ $(document).ready(function() {
     var c = $slides.index($slides.filter('.on'));
     currSlide = c > -1 ? c : currSlide;
     $slides.slice(1, currSlide + 3).removeClass('lazyload');
-    console.log('currSlide', currSlide);
+    // console.log('currSlide', currSlide);
   }
   bindNext(0);
   $slides.viewportChecker({
@@ -88,23 +88,23 @@ $(document).ready(function() {
 });
 
 // Tours Slider
-$(document).ready(function() {
-  var $sliders = $('.gallery');
-  $.each($sliders, function(i, ele){
-    var currSlide = 0;
-    var $slides = $(ele);
-    $slides.children('img').viewportChecker({
-      scrollHorizontal: true,
-      classToAdd: '',
-      classToAddForFullView: 'on',
-      repeat: true,
-      scrollBox: ele,
-      callbackFunction($elem, action){
-        // console.log($elem, action);
-      }
-    });
-  })
-});
+// $(document).ready(function() {
+//   var $sliders = $('.gallery');
+//   $.each($sliders, function(i, ele){
+//     var currSlide = 0;
+//     var $slides = $(ele);
+//     $slides.children('img').viewportChecker({
+//       scrollHorizontal: true,
+//       classToAdd: '',
+//       classToAddForFullView: 'on',
+//       repeat: true,
+//       scrollBox: ele,
+//       callbackFunction($elem, action){
+//         // console.log($elem, action);
+//       }
+//     });
+//   })
+// });
 
 
 // Team Slider
