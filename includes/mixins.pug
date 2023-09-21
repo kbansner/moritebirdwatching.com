@@ -13,6 +13,15 @@ mixin head(pageTitle)
   link(href='https://fonts.googleapis.com/css?family=EB+Garamond', rel='stylesheet')
   link(href='/css/normalize-min.css', rel='stylesheet', type='text/css')
   link(href='/css/main.css', rel='stylesheet', type='text/css')
+
+  <!-- Google tag (gtag.js) -->
+  script(src="https://www.googletagmanager.com/gtag/js?id=G-KLL7KGZHY2", async='true')
+  script.
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KLL7KGZHY2');
+
   title 
     |Morite Birdwatching: 
     =pageTitle
